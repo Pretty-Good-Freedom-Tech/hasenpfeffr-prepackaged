@@ -56,45 +56,63 @@ At the AWS console, go to your new instance, go to Security, click on the securi
 SSH into instance.
 
 ```
-sudo apt-get update
-sudo add-apt-repository -y ppa:openjdk-r/ppa
-sudo apt-get update
-sudo apt install java-common
-wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/neotechnology.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/neotechnology.gpg] https://debian.neo4j.com stable latest' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
-sudo apt-get update
-apt list -a neo4j // to verify neo4j has been installed
-java -version // It will say Command 'java' not found ...
-
-sudo apt-get install neo4j // or to specify version: sudo apt-get install neo4j=1:5.26.1)
-
-java -version // should see something like: openjdk version "17.0.13" 2024-10-15 ... (apparently installing neo4j also installs java)
+sudo apt update && sudo apt install -y wget
+wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
+echo 'deb https://debian.neo4j.com stable 5' | sudo tee /etc/apt/sources.list.d/neo4j.list
+sudo apt update
+apt list -a neo4j // to see what versions are available to install
+sudo apt-get install neo4j=1:5.26.3 // or whatever is the latest stable version
 ```
+
+```
+sudo systemctl start neo4j
+sudo systemctl status neo4j
+sudo systemctl enable neo4j
+```
+
+Changes to neo4j.conf
+```
+sudo cp /etc/neo4j/neo4j.conf /etc/neo4j/neo4j.conf.backup
+sudo nano /etc/neo4j/neo4j.conf
+```
+
+Then uncomment out the following lines (and add the 0.0.0.0 if needed)
+```
+server.default_listen_address=0.0.0.0
+server.bolt.listen_address=0.0.0.0:7687
+server.http.listen_address=0.0.0.0:7474
+```
+
+```
+sudo systemctl restart neo4j
+sudo systemctl status neo4j
+```
+
+Then configure the EC2 security group next to allow incoming traffic on ports 7474 and 7687.
+
+You should now be able to access neo4j on the browser using port 7474: `http://x.x.x.x:7474` Log on with username: neo4j and password: neo4j. It should prompt you to change the password.
 
 ### install neo4j graph data science
 
 ```
 cd /var/lib/neo4j/plugins/
-sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
-ls -la // to verify presence of neo4j-graph-data-science-2.13.2.jar
+sudo wget https://graphdatascience.ninja/neo4j-graph-data-science-2.4.1.jar
+ls -la // to verify presence of neo4j-graph-data-science-2.4.1.jar
+sudo chown neo4j:neo4j neo4j-graph-data-science-2.4.1,jar
 ```
 
-Make several updates to neo4j.conf; `sudo nano /etc/neo4j/neo4j.conf` and make the following changes. Most involve uncommenting and then editing preexisting lines.
+Then go back into `sudo nano /etc/neo4j/neo4j.conf` and make the following changes:
+
 
 ```
-initial.dbms.default_database=hasenpfeffr
+dbms.security.procedures.unrestricted=gds.*
+```
 
-# Note: 0.0.0.0:xxxx, not :xxxx which may be the default
-server.bolt.listen_address=0.0.0.0:7687
-server.http.listen_address=0.0.0.0:7474
-# optional but you'll need to add 7473 to Inbound rules:
-server.https.listen_address=0.0.0.0:7473
-
+```
 // I have not yet determined the minimum values for these:
 server.memory.heap.initial_size=4g
 server.memory.heap.max_size=4g
 
-dbms.security.procedures.unrestricted=gds.*
 dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
 ```
 
