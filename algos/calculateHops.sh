@@ -20,5 +20,4 @@ do
     ((numHops++))
     cypherResults=$(sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER3")
     numUpdates="${cypherResults:11}"
-    echo "hop # $numHops; numUpdates: $numUpdates"
 done
