@@ -45,7 +45,16 @@ Set up AWS EC2 ubuntu instance.
 
 Install neo4j following [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation).
 
-downloads into jar
+### install neo4j graph data science
+
+```
+cd /var/lib/neo4j/plugins/
+sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
+sudo nano /etc/neo4j/neo4j.conf
+# add dbms.security.procedures.unrestricted=gds.*
+# add dbms.security.procedures.allowlist=gds.*
+sudo neo4j restart
+```
 
 ```
 # updates to neo4j.conf
