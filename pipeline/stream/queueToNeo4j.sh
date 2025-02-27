@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Set Neo4j connection details
-NEO4J_URI="bolt://localhost:7687"
-NEO4J_USER="neo4j"
-NEO4J_PASSWORD="neo4jneo4j"
+source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 
 while read -r p;
 do
