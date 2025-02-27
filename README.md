@@ -50,17 +50,23 @@ Install neo4j following [these instructions](https://neo4j.com/docs/operations-m
 ```
 cd /var/lib/neo4j/plugins/
 sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
-sudo nano /etc/neo4j/neo4j.conf
-# add dbms.security.procedures.unrestricted=gds.*
-# add dbms.security.procedures.allowlist=gds.*
-sudo neo4j restart
 ```
 
-```
-# updates to neo4j.conf
-sudo nano /etc/neo4j/neo4j.conf
+updates to neo4j.conf `sudo nano /etc/neo4j/neo4j.conf` and make these changes:
 
 ```
+server.bolt.listen_address=0.0.0.0:7687
+server.http.listen_address=0.0.0.0:7474
+server.https.listen_address=0.0.0.0:7473
+
+initial.dbms.default_database=hasenpfeffr
+server.memory.heap.initial_size=4g
+server.memory.heap.max_size=4g
+dbms.security.procedures.unrestricted=gds.*
+dbms.security.procedures.allowlist=gds.*
+```
+
+Then `sudo neo4j restart` or `sudo service neo4j restart`
 
 ### install apoc
 
@@ -73,12 +79,11 @@ sudo chmod 755 apoc-5.26.2-core.jar
 sudo nano /etc/neo4j/neo4j.conf
 # change comments to define allowlist: `dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,gds.*`
 sudo mv ~/hasenpfeffr/setup/apoc.conf /etc/neo4j/apoc.conf
-sudo service neo4j restart
 ```
 
+Then `sudo neo4j restart` or `sudo service neo4j restart`
 
-
-test in browser with 
+test in browser (`http://x.x.x.x:7474`; or once strfry is implemented, `http://relay.mySite.com:7474`) with 
 
 ```
 WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/4.0/src/test/resources/person.json' AS url
