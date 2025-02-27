@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Set Neo4j connection details
-NEO4J_URI="bolt://localhost:7687"
-NEO4J_USER="neo4j"
-NEO4J_PASSWORD="neo4jneo4j"
+# This calculates number of hops from scratch starting with GRAPEVINE_REFERENCE_PUBKEY which by definition is 0 hops away
 
-source /etc/hasenpfeffr.conf
+source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, GRAPEVINE_REFERENCE_PUBKEY
 
 CYPHER1="MATCH (u:NostrUser) SET u.hops=999"
 CYPHER2="MATCH (u:NostrUser {pubkey:'$GRAPEVINE_REFERENCE_PUBKEY'}) SET u.hops=0"
@@ -17,8 +14,6 @@ sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER
 sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER2"
 cypherResults=$(sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER3")
 numUpdates="${cypherResults:11}"
-
-echo "hop # $numHops; numUpdates: $numUpdates"
 
 while [[ "$numUpdates" -gt 0 ]] && [[ "$numHops" -lt 12 ]];
 do
