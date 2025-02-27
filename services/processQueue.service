@@ -2,7 +2,7 @@
 Description=processes pubkeys from queue by updating edges from that pubkey in neo4j
 
 [Service]
-ExecStart=sudo ~/hasenpfeffr/pipeline/stream/processQueue.sh 
+ExecStart=flock -n /var/lock/processQueue ~/hasenpfeffr/pipeline/stream/processQueue.sh 
 
 [Install]
 WantedBy=multi-user.target
