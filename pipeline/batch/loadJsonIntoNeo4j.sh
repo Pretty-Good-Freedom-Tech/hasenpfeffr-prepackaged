@@ -2,4 +2,4 @@
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 
-sudo cypher-shell -u neo4j -p neo4jneo4j -a bolt://localhost:7687 -f apocCypherCommand1 > /dev/null
+sudo cypher-shell -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" -a "$NEO4J_URI" -f apocCypherCommand1 > /dev/null
