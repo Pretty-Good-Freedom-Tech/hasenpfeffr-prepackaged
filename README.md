@@ -62,6 +62,33 @@ sudo nano /etc/neo4j/neo4j.conf
 
 ```
 
+### install apoc
+
+```
+cd /var/lib/neo4j/plugins
+sudo wget https://github.com/neo4j/apoc/releases/download/5.26.2/apoc-5.26.2-core.jar
+# can now see file apoc-5.26.2-core.jar
+sudo chown neo4j:neo4j apoc-5.26.2-core.jar (not sure if this is correct)
+sudo chmod 755 apoc-5.26.2-core.jar
+sudo nano /etc/neo4j/neo4j.conf
+# change comments to define allowlist: `dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,gds.*`
+sudo mv ~/hasenpfeffr/setup/apoc.conf /etc/neo4j/apoc.conf
+sudo service neo4j restart
+```
+
+
+
+test in browser with 
+
+```
+WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/4.0/src/test/resources/person.json' AS url
+
+CALL apoc.load.json(url) YIELD value as person
+
+MERGE (p:Person {name:person.name})
+   ON CREATE SET p.age = person.age, p.children = size(person.children);
+```
+
 ## strfry
 
 Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md).
