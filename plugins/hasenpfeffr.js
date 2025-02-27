@@ -6,7 +6,7 @@ const whitelist_pubkeys = JSON.parse(fs.readFileSync('./whitelist_pubkeys.json',
 
 const blacklist_pubkeys = JSON.parse(fs.readFileSync('./blacklist_pubkeys.json', 'utf8'))
 
-const whitelist_kinds = [3, 1984, 10000, 10040, 30382, 30383, 30384]
+const whitelist_kinds = JSON.parse(fs.readFileSync('./whitelist_kinds.json', 'utf8'))
 
 const rl = require('readline').createInterface({
   input: process.stdin,
