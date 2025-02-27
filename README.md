@@ -45,11 +45,31 @@ Set up AWS EC2 instance with the following options:
 - Ubuntu Server 24.04 LTS (the first choice)
 - 64 bit (x86)
 - Instance type: r7i.xlarge
-- Network settings: allo SSH, HTTP, and HTTPS
+- Network settings: allow SSH, HTTP, and HTTPS
 
 ## neo4j
 
-Install neo4j following [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation).
+Install neo4j. These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation)). If using an AI agent, you can tell the AI to read that page and follow those instructions - Windsong did it for me on the first try.
+
+At the AWS console, go to your new instance, go to Security, click on the security group, go to Edit Inbound Rules, and add two new rules: both of type Custom TCP, Port range: 7474 for the first and 7687 for the second; for both, select 0.0.0.0/0 Source will change automatically to Anywhere-IPv4 (or you can be more selective for higher security)
+
+SSH into instance.
+
+```
+sudo apt-get update
+sudo add-apt-repository -y ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt install java-common
+wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/neotechnology.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/neotechnology.gpg] https://debian.neo4j.com stable latest' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
+sudo apt-get update
+apt list -a neo4j
+java -version // Command 'java' not found ...
+
+sudo apt-get install neo4j=1:5.26.1 (latest version)
+
+java -version // openjdk version "17.0.13" 2024-10-15 ... (apparently installing neo4j also installs java)
+```
 
 ### install neo4j graph data science
 
