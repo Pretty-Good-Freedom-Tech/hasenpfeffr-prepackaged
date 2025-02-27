@@ -108,6 +108,35 @@ Then go back into `sudo nano /etc/neo4j/neo4j.conf` and make the following chang
 dbms.security.procedures.unrestricted=gds.*
 ```
 
+Then restart neo4j: 
+```
+sudo systemctl restart neo4j
+sudo systemctl status neo4j
+```
+
+To test whether gds has been properly installed, refresh the neo4j browser (accessed using port 7474) and enter this in the command line on the top:
+`RETURN gds.version()`
+
+### install apoc
+
+```
+cd /var/lib/neo4j/plugins
+sudo wget https://github.com/neo4j/apoc/releases/download/5.26.2/apoc-5.26.2-core.jar
+ls -la # make sure can now see file apoc-5.26.2-core.jar
+sudo chown neo4j:neo4j apoc-5.26.2-core.jar # (not sure if need to do this)
+sudo chmod 755 apoc-5.26.2-core.jar # (not sure if need to do this)
+
+sudo mv ~/hasenpfeffr/setup/apoc.conf /etc/neo4j/apoc.conf
+```
+
+Once again update conf: `sudo nano /etc/neo4j/neo4j.conf`
+
+and uncomment out and edit the following line: 
+
+```
+dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
+```
+
 ```
 // I have not yet determined the minimum values for these:
 server.memory.heap.initial_size=4g
@@ -126,18 +155,7 @@ sudo systemctl status neo4j
 ```
 `sudo service neo4j status` or `neo4j status` You should see it is running
 
-### install apoc
 
-```
-cd /var/lib/neo4j/plugins
-sudo wget https://github.com/neo4j/apoc/releases/download/5.26.2/apoc-5.26.2-core.jar
-# can now see file apoc-5.26.2-core.jar
-sudo chown neo4j:neo4j apoc-5.26.2-core.jar (not sure if need to do this)
-sudo chmod 755 apoc-5.26.2-core.jar
-sudo nano /etc/neo4j/neo4j.conf
-# change comments to define allowlist: `dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,gds.*`
-sudo mv ~/hasenpfeffr/setup/apoc.conf /etc/neo4j/apoc.conf
-```
 
 Then `sudo neo4j restart` or `sudo service neo4j restart`
 
