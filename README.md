@@ -72,6 +72,11 @@ sudo apt update
 git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 cd hasenpfeffr
 
+# setup hasenpfeffr.conf
+
+sudo mv ~/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
+(edit hasenpfeffr.conf to update neo4j password and primary user pubkey)
+
 # activate the strfry plugin
 
 # update strfry.conf
