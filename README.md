@@ -47,9 +47,19 @@ Set up AWS EC2 instance with the following options:
 - Instance type: r7i.xlarge
 - Network settings: allow SSH, HTTP, and HTTPS
 
+## download hasenpfeffr
+
+This has a few files we will need during the following steps.
+
+```
+git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
+```
+
 ## neo4j
 
-Install neo4j. These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation)). If using an AI agent, you can tell the AI to read that page and follow those instructions - Windsong did it for me on the first try.
+Install neo4j. These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation)).
+
+We will be installing neo4j community edition, neo4j graph data science, and APOC. If neo4j won't start and you don't know why, it could be due to incompatible versions of these 3 libraries, especially if your habit is to install latest stable version. I have specified versions in the steps below which have worked together for me.
 
 At the AWS console, go to your new instance, go to Security, click on the security group, go to Edit Inbound Rules, and add two new rules: both of type Custom TCP, Port range: 7474 for the first and 7687 for the second; for both, select 0.0.0.0/0 Source will change automatically to Anywhere-IPv4 (or you can be more selective for higher security)
 
@@ -185,9 +195,7 @@ Set up the pipeline from strfry to neo4j. scripts being written.
 ```
 sudo apt update
 
-# downloadhasenpfeffr
-git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
-cd hasenpfeffr
+cd ~/hasenpfeffr
 
 # setup hasenpfeffr.conf
 
