@@ -41,9 +41,11 @@ This is experimental, not yet optimized for efficiency and currently requires a 
 
 ## server
 
-Set up AWS EC2 ubuntu instance.
-
-r7i.xlarge
+Set up AWS EC2 instance with the following options:
+- Ubuntu Server 24.04 LTS (the first choice)
+- 64 bit (x86)
+- Instance type: r7i.xlarge
+- Network settings: allo SSH, HTTP, and HTTPS
 
 ## neo4j
 
