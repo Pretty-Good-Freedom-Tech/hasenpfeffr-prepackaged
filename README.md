@@ -165,6 +165,8 @@ MERGE (p:Person {name:person.name})
    ON CREATE SET p.age = person.age, p.children = size(person.children);
 ```
 
+To clear the database, enter the command: `MATCH (n) DETACH DELETE n`
+
 If it installed one node with label: Person, then APOC is working.
 
 ### update memory
