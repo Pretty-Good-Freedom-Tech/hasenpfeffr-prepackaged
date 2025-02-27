@@ -63,12 +63,12 @@ sudo apt install java-common
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/neotechnology.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/neotechnology.gpg] https://debian.neo4j.com stable latest' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
 sudo apt-get update
-apt list -a neo4j
-java -version // Command 'java' not found ...
+apt list -a neo4j // to verify neo4j has been installed
+java -version // It will say Command 'java' not found ...
 
-sudo apt-get install neo4j=1:5.26.1 (latest version)
+sudo apt-get install neo4j // or to specify version: sudo apt-get install neo4j=1:5.26.1)
 
-java -version // openjdk version "17.0.13" 2024-10-15 ... (apparently installing neo4j also installs java)
+java -version // should see something like: openjdk version "17.0.13" 2024-10-15 ... (apparently installing neo4j also installs java)
 ```
 
 ### install neo4j graph data science
