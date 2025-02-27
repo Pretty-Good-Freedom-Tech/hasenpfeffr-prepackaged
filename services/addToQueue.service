@@ -1,0 +1,8 @@
+[Unit]
+Description=adds pubkeys to queue when strfry adds kind 3 event
+
+[Service]
+ExecStart=sudo ~/hasenpfeffr/pipeline/stream/addToQueue.sh
+
+[Install]
+WantedBy=multi-user.target
