@@ -147,30 +147,15 @@ and uncomment out and edit the following line:
 dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
 ```
 
+Then restart neo4j: 
 ```
-// I have not yet determined the minimum values for these:
-server.memory.heap.initial_size=4g
-server.memory.heap.max_size=4g
-
-dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
-```
-
-```
-sudo apt update
-sudo apt upgrade
-
-sudo systemctl enable neo4j`
-sudo systemctl start neo4j
+sudo systemctl restart neo4j
 sudo systemctl status neo4j
 ```
-`sudo service neo4j status` or `neo4j status` You should see it is running
 
+To test whether APOC has been properly installed, refresh the neo4j browser (accessed using port 7474). This is supposed to work but doesn't for me: `RETURN apoc.version() AS output;`
 
-
-Then `sudo neo4j restart` or `sudo service neo4j restart`
-
-test in browser (`http://x.x.x.x:7474`; or once strfry is implemented, `http://relay.mySite.com:7474`) with 
-
+However, this does work for me:
 ```
 WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/4.0/src/test/resources/person.json' AS url
 
@@ -178,6 +163,18 @@ CALL apoc.load.json(url) YIELD value as person
 
 MERGE (p:Person {name:person.name})
    ON CREATE SET p.age = person.age, p.children = size(person.children);
+```
+
+If it installed one node with label: Person, then APOC is working.
+
+### update memory
+
+If running into memory problems, go to conf: `sudo nano /etc/neo4j/neo4j.conf` and edit the followig lines:
+
+```
+// I have not yet determined the minimum values for these:
+server.memory.heap.initial_size=4g
+server.memory.heap.max_size=4g
 ```
 
 ## strfry
