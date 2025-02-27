@@ -98,7 +98,14 @@ dbms.security.procedures.unrestricted=gds.*
 dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
 ```
 
-`sudo service neo4j start`
+```
+sudo apt update
+sudo apt upgrade
+
+sudo systemctl enable neo4j`
+sudo systemctl start neo4j
+sudo systemctl status neo4j
+```
 `sudo service neo4j status` or `neo4j status` You should see it is running
 
 ### install apoc
