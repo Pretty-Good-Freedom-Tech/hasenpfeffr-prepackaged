@@ -96,9 +96,9 @@ You should now be able to access neo4j on the browser using port 7474: `http://x
 
 ```
 cd /var/lib/neo4j/plugins/
-sudo wget https://graphdatascience.ninja/neo4j-graph-data-science-2.4.1.jar
-ls -la // to verify presence of neo4j-graph-data-science-2.4.1.jar
-sudo chown neo4j:neo4j neo4j-graph-data-science-2.4.1,jar
+sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
+ls -la // to verify presence of neo4j-graph-data-science-2.13.2.jar
+sudo chown neo4j:neo4j neo4j-graph-data-science-2.13.2,jar
 ```
 
 Then go back into `sudo nano /etc/neo4j/neo4j.conf` and make the following changes:
