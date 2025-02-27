@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This calculates number of hops from scratch starting with GRAPEVINE_REFERENCE_PUBKEY which by definition is 0 hops away
+# The resuls are stored in neo4j using the property: hops
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, GRAPEVINE_REFERENCE_PUBKEY
 
