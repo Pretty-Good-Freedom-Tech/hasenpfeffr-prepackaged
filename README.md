@@ -37,9 +37,13 @@ We envision Personalized WoT Relays to progress through several stages:
 
 # Instructions
 
+This is experimental, not yet optimized for efficiency and currently requires a relatively expensive instance. For now, I recommend you get it started but plan on destroying the instance pretty quickly so you don't incur high fees. Optimizations are definitely 
+
 ## server
 
 Set up AWS EC2 ubuntu instance.
+
+r7i.xlarge
 
 ## neo4j
 
