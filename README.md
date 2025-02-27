@@ -76,21 +76,30 @@ java -version // should see something like: openjdk version "17.0.13" 2024-10-15
 ```
 cd /var/lib/neo4j/plugins/
 sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
+ls -la // to verify presence of neo4j-graph-data-science-2.13.2.jar
 ```
 
-updates to neo4j.conf `sudo nano /etc/neo4j/neo4j.conf` and make these changes:
+Make several updates to neo4j.conf; `sudo nano /etc/neo4j/neo4j.conf` and make the following changes. Most involve uncommenting and then editing preexisting lines.
 
 ```
+initial.dbms.default_database=hasenpfeffr
+
+# Note: 0.0.0.0:xxxx, not :xxxx which may be the default
 server.bolt.listen_address=0.0.0.0:7687
 server.http.listen_address=0.0.0.0:7474
+# optional but you'll need to add 7473 to Inbound rules:
 server.https.listen_address=0.0.0.0:7473
 
-initial.dbms.default_database=hasenpfeffr
+// I have not yet determined the minimum values for these:
 server.memory.heap.initial_size=4g
 server.memory.heap.max_size=4g
+
 dbms.security.procedures.unrestricted=gds.*
-dbms.security.procedures.allowlist=gds.*
+dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.export.json.query,gds.*
 ```
+
+`sudo service neo4j start`
+`neo4j status` You should see 
 
 Then `sudo neo4j restart` or `sudo service neo4j restart`
 
@@ -100,7 +109,7 @@ Then `sudo neo4j restart` or `sudo service neo4j restart`
 cd /var/lib/neo4j/plugins
 sudo wget https://github.com/neo4j/apoc/releases/download/5.26.2/apoc-5.26.2-core.jar
 # can now see file apoc-5.26.2-core.jar
-sudo chown neo4j:neo4j apoc-5.26.2-core.jar (not sure if this is correct)
+sudo chown neo4j:neo4j apoc-5.26.2-core.jar (not sure if need to do this)
 sudo chmod 755 apoc-5.26.2-core.jar
 sudo nano /etc/neo4j/neo4j.conf
 # change comments to define allowlist: `dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,gds.*`
