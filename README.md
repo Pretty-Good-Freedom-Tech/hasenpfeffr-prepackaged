@@ -45,15 +45,77 @@ Set up AWS EC2 ubuntu instance.
 
 Install neo4j following [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation).
 
+downloads into jar
+
+```
+# updates to neo4j.conf
+sudo nano /etc/neo4j/neo4j.conf
+
+```
+
 ## strfry
 
 Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md).
 
 * change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
 
+* keep user: ubuntu rather than make new user strfry
+ 
 ## hasenpfeffr
 
 Set up the pipeline from strfry to neo4j. scripts being written.
+
+```
+sudo apt update
+
+# downloadhasenpfeffr
+git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
+cd hasenpfeffr
+
+# activate the strfry plugin
+
+# update strfry.conf
+
+# set up strfry router
+
+# negentropy to sync with relay.primal.net
+
+# add neo4j constraints and indices
+
+# batch load strfry into neo4j
+
+sudo ~/hasenpfeffr/pipeline/batch/load.sh
+
+# set up live streaming into neo4j
+
+## systemctl: addToQueue, which listens to relay and adds pubkeys to queue
+
+sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
+sudo systemctl enable addToQueue.service
+sudo systemctl start addToQueue
+sudo systemctl status addToQueue
+
+cd ~/hasenpfeffr/pipeline/stream/queue
+ls -Rltr ; ls -1 | wc -l
+(Check to see that pubkeys are being added to the queue)
+
+## systemctl: processQueue, which listens to queue and updates pubkey one at a time (not working yet)
+
+sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
+
+sudo systemctl enable processQueue.service
+sudo systemctl start processQueue
+sudo systemctl status processQueue
+
+cd ~/hasenpfeffr/pipeline/stream/queue
+ls -Rltr ; ls -1 | wc -l
+(Check to see that pubkeys are disappearing from the queue)
+
+# batch load strfry into neo4j for the past 24 hours (indicate time in seconds)
+
+sudo ~/hasenpfeffr/pipeline/batch/load.sh --recent 86400
+
+```
 
 also:
 
