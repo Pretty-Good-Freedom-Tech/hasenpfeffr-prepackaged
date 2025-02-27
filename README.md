@@ -99,9 +99,7 @@ dbms.security.procedures.allowlist=apoc.coll.*,apoc.load.*,apoc.periodic.*,apoc.
 ```
 
 `sudo service neo4j start`
-`neo4j status` You should see 
-
-Then `sudo neo4j restart` or `sudo service neo4j restart`
+`sudo service neo4j status` or `neo4j status` You should see it is running
 
 ### install apoc
 
