@@ -47,6 +47,12 @@ Set up AWS EC2 instance with the following options:
 - Instance type: r7i.xlarge
 - Network settings: allow SSH, HTTP, and HTTPS
 
+### associate elastic IP address
+
+on left: Network & Security: Elastic IPs
+
+Point DNS to public IPv4 address. At later step, we will add this URL, eg `relay.mySite.com`, to `hasenpfeffr.conf`
+
 ## download hasenpfeffr
 
 This has a few files we will need during the following steps.
