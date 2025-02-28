@@ -212,10 +212,25 @@ This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.
 
 Edit the router config: `sudo nano ~/hasenpfeffr/setup/strfry-router.config`
 
+Move router config:
+
 ```
 sudo mv ~/hasenpfeffr/setup/strfry-router.config /etc/strfry-router.config
 sudo chown strfry:strfry /etc/strfry-router.config
 ```
+
+Setup service to keep router running in the background:
+
+```
+sudo mv ~/hasenpfeffr/services/runRouter.service /etc/systemd/system/runRouter.service
+sudo chown root:root /etc/systemd/system/runRouter.service
+
+sudo systemctl enable runRouter.service
+sudo systemctl start runRouter.service
+sudo systemctl status runRouter.service
+```
+
+To see if downloads are happening, check how many events are in strfry using `sudo strfry scan --count '{}'` 
 
 ## hasenpfeffr
 
