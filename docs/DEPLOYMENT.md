@@ -161,9 +161,13 @@ To clear the database, run the command: `MATCH (n) DETACH DELETE n`
 If running into memory problems, go to conf: `sudo nano /etc/neo4j/neo4j.conf` and edit the followig lines:
 
 ```
-// I have not yet determined the minimum values for these:
-server.memory.heap.initial_size=4g
-server.memory.heap.max_size=4g
+// I have not yet determined the minimum values for these, but currently I am using:
+server.memory.heap.initial_size=2g
+server.memory.heap.max_size=2g
+
+// Windsurf recommended
+dbms.memory.transaction.total.max=1G // (which I did)
+dbms.tx_state.max_off_heap_memory=1G // (which doesn't make sense so I didn't do)
 ```
 
 ## strfry
@@ -284,6 +288,15 @@ You should see the files disappearing from `~/hasenpfeffr/pipeline/stream$/queue
 
 ## batch pipeline module
 
+Check to see that kind3 events are in strfry: `sudo strfry scan --count '{"kinds":[3]}'`; there should be over 112k as of 28 Feb 2025.
+
+Stop the streaming pipeline:
+
+```
+sudo systemctl stop addToQueue.service
+sudo systemctl stop processQueue.service
+```
+
 ```
 cd ~/hasenpfeffr/pipeline/batch
 sudo chmod +x transfer.sh
@@ -291,6 +304,20 @@ sudo chmod +x transfer.sh
 sudo chmod +x strfryToKind3Events.sh
 sudo chmod +x kind3EventsToFollows.sh
 sudo chmod +x kind3EventsToFollows.js
+
+sudo ./transfer.sh
+```
+
+The last command should initiate batch load of all kind3 event data from strfry into neo4j and should take 10 or 15 minutes or so. At the end, there should be over 200k NostrUser nodes and roughly 6 or 7 million (or more) FOLLOWS.
+
+Restart the streaming pipeline and check to see it is running:
+
+```
+sudo systemctl start addToQueue.service
+sudo systemctl start processQueue.service
+
+sudo systemctl status addToQueue.service
+sudo systemctl status processQueue.service
 ```
 
 ```
