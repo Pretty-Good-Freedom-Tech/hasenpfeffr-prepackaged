@@ -198,6 +198,10 @@ server.memory.heap.max_size=4g
 
 Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md).
 
+additional changes to strfry.conf:
+nofiles = 0
+maxFilterLimit = 300000 (just something big)
+
 * change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
 
 * keep user: ubuntu rather than make new user strfry
