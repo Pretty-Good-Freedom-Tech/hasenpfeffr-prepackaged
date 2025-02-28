@@ -11,4 +11,4 @@ sudo ./updateNostrUserKind3Data.sh
 # clean up
 
 sudo rm /var/lib/neo4j/import/allKind3EventsStripped.json
-sudo rm /var/lib/neo4j/import/eventsToTransferForInitialization.json
+sudo rm /var/lib/neo4j/import/followsToAddToNeo4j.json
