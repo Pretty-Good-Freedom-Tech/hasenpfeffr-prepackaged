@@ -290,8 +290,6 @@ sudo chmod +x load.sh
 
 sudo chmod +x strfryToKind3Events.sh
 sudo chmod +x kind3EventsToFollows.sh
-sudo chmod +x followsToNeo4j.sh
-sudo chmod +x updateNostrUserKind3Data.sh
 ```
 
 ```
