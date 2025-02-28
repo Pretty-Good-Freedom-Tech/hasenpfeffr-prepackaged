@@ -6,7 +6,7 @@ source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 cd /home/ubuntu/hasenpfeffr/pipeline/batch/
 
 # Run the optimized Node.js script
-node optimized_kind3EventsToFollows.js
+node kind3EventsToFollows.js
 
 # Move files to Neo4j import directory
 sudo mv followsToAddToNeo4j.json /var/lib/neo4j/import/followsToAddToNeo4j.json
