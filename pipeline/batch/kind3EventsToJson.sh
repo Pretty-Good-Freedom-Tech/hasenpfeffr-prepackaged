@@ -11,7 +11,6 @@ cat allKind3EventsStripped.json | while read line; do
     ((eventCounter++))
     eventCounterMod=$(($eventCounter % 100))
     if [[ "$eventCounterMod" = 0 ]]; then
-        timestamp
         echo "processing event $eventCounter out of $totNumberOfEvents"
     fi
     sudo node -e "try {
