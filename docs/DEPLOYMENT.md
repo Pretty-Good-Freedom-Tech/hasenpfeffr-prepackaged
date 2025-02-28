@@ -290,6 +290,7 @@ sudo chmod +x transfer.sh
 
 sudo chmod +x strfryToKind3Events.sh
 sudo chmod +x kind3EventsToFollows.sh
+sudo chmod +x kind3EventsToFollows.js
 ```
 
 ```
