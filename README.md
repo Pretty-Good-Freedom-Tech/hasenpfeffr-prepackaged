@@ -304,6 +304,8 @@ sudo systemctl start processQueue.service
 sudo systemctl status processQueue.service
 ```
 
+You should see the files disappearing from `~/hasenpfeffr/pipeline/stream$/queue` and data accumulating in Neo4j. In the Neo4j browser, run commands `MATCH (n:NostrUser) RETURN count(n) AS numNostrUsers` and `MATCH ()-[r:FOLLOWS]->() RETURN count(r) AS numFollows` to see how many users and follow relationships there are.
+
 ```
 # activate the strfry plugin
 
