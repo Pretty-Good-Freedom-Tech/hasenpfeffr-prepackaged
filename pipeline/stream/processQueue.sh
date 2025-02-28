@@ -1,10 +1,8 @@
 #!/bin/bash
 
 processOldestPubkeyInQueue() {
-  echo "------------------------------------------------------------------------------------------------------- processOldestPubkeyInQueue executed!!!!!!!"
-  sudo /home/ubuntu/strfry/brainstorm/actions/nodes/nostrUsers/nostrUserUpdateFollowsV2.sh
-  echo "======================================================================================================= processOldestPubkeyInQueue completed!!!!!! calling again"
-  numPubkeysAwaiting=$(ls -1 /home/ubuntu/strfry/pipeline/queueByPubkey/ | wc -l)
+  sudo /home/ubuntu/hasenpfeffr/pipeline/stream/updateSingleNostrUser.sh
+  numPubkeysAwaiting=$(ls -1 /home/ubuntu/hasenpfeffr/pipeline/stream/queue/ | wc -l)
   if [[ "$numPubkeysAwaiting" -gt 0  ]]; then
     echo "there are $numPubkeysAwaiting pubkeys in the queue waiting for their follows to be updated"
     processOldestPubkeyInQueue
@@ -18,13 +16,6 @@ processOldestPubkeyInQueue() {
 function func1() {
    processOldestPubkeyInQueue
 }
-
-# first, start the function that listens to the relay and writes to the queue
-# func1 &
-# may manage func1 separately
-
-# second, start the function that iterates though the queue, oldest pubkey first, and processes updates
-# processOldestPubkeyInQueue &
 
 func1 &
 
