@@ -31,17 +31,17 @@ PUBKEY=$(echo $kind3Event | jq '.pubkey' | tr -d '"')
 CREATED_AT=$(echo $kind3Event | jq '.created_at' | tr -d '"')
 TAGS=$(echo $kind3Event | jq '.tags' | jq -c .)
 
-> newFollowList.json
+> /home/ubuntu/hasenpfeffr/pipeline/stream/newFollowList.json
 
 for item in $(echo $TAGS | jq -c '.[]'); do
     tag=$(echo $item | jq '.[0]' | tr -d '"')
     if [ "$tag" == "p" ]; then
         pk_followee=$(echo $item | jq '.[1]' | tr -d '"')
-        echo "{ pk_follower: \"$pk_follower\", pk_followee: \"$pk_followee\" }" >> newFollowList.json
+        echo "{ pk_follower: \"$pk_follower\", pk_followee: \"$pk_followee\" }" >> /home/ubuntu/hasenpfeffr/pipeline/stream/newFollowList.json
     fi
 done
 
-sudo mv newFollowList.json /var/lib/neo4j/import/newFollowList.json
+sudo mv /home/ubuntu/hasenpfeffr/pipeline/stream/newFollowList.json /var/lib/neo4j/import/newFollowList.json
 
 sudo chown ubuntu:ubuntu /var/lib/neo4j/import/newFollowList.json
 
