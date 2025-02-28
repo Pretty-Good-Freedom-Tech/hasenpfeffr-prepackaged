@@ -237,28 +237,77 @@ To see if downloads are happening, check how many events are in strfry using `su
 ```
 sudo apt update
 
+sudo apt install npm
+
+sudo npm install -g @nostr-dev-kit/ndk nostr-tools ws websocket-polyfill fs dotenv
+
+cd ~/hasenpfeffr
+sudo npm install dotenv
+sudo npm install @nostr-dev-kit/ndk
+sudo npm install ws
+
 cd ~/hasenpfeffr
 ```
 ### setup hasenpfeffr.conf
 
-Edit hasenpfeffr.conf to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
+Edit hasenpfeffr.conf using `sudo nano ~/hasenpfeffr/setup/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
 TODO: make these env variables.
 
 ```
 sudo mv ~/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
+sudo chown root:root /etc/hasenpfeffr.conf
 ```
 
-### activate the strfry plugin
+## add neo4j constraints and indexes
 
 ```
-# update strfry.conf
+cd ~/hasenpfeffr/setup
+sudo chmod +x neo4jCommandsAndIndices.sh
+sudo ./neo4jCommandsAndIndices.sh
+```
 
-# set up strfry router
+In the neo4j browser, check for for their presence using `show constraints` and `show indexes`.
+
+## stream follows into neo4j
+
+We will have two services for this role: one that listens to strfry for new kind 3 notes and adds pubkeys to a queue, and another that processes the pubkeys in the queue.
+
+```
+cd ~/hasenpfeffr/pipeline/stream
+sudo chmod +x addToQueue.mjs
+sudo chmod +x processQueue.sh
+sudo chmod +x updateSingleNostrUser.sh
+```
+
+Set up the `addToQueue` service:
+
+```
+sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
+sudo chown root:root /etc/systemd/system/addToQueue.service
+
+sudo systemctl enable addToQueue.service
+sudo systemctl start addToQueue.service
+sudo systemctl status addToQueue.service
+```
+
+To verify the addToQueue service is working, run: `sudo journalctl -u addToQueue -f` or go to `~/hasenpfeffr/pipeline/stream$/queue` and use `ls -Rltr ; ls -1 | wc -l` to watch the files grow.
+
+Next, set up the `processQueue` service:
+
+```
+sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
+sudo chown root:root /etc/systemd/system/processQueue.service
+
+sudo systemctl enable processQueue.service
+sudo systemctl start processQueue.service
+sudo systemctl status processQueue.service
+```
+
+```
+# activate the strfry plugin
 
 # negentropy to sync with relay.primal.net
-
-# add neo4j constraints and indices
 
 # batch load strfry into neo4j
 
