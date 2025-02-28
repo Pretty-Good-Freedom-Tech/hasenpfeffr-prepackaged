@@ -49,9 +49,9 @@ Set up AWS EC2 instance with the following options:
 
 ### associate elastic IP address
 
-on left: Network & Security: Elastic IPs
+On AWS EC2 control panel, on the column on the left, look under Network & Security and go to Elastic IPs. Allocate one and associated it with your instance. Take that IPv4 address and use it to point your DNS of choice, e.g. `relay.myCoolSite.com`, to your instance. At later step, we will add this URL to `hasenpfeffr.conf` file.
 
-Point DNS to public IPv4 address. At later step, we will add this URL, eg `relay.mySite.com`, to `hasenpfeffr.conf`
+SSH into your instance and proceed with the steps below. 
 
 ## download hasenpfeffr
 
