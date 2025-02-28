@@ -53,6 +53,10 @@ On AWS EC2 control panel, on the column on the left, look under Network & Securi
 
 SSH into your instance and proceed with the steps below. 
 
+### ports
+
+7474 and 7687
+
 ## download hasenpfeffr
 
 This has a few files we will need during the following steps.
