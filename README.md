@@ -165,9 +165,12 @@ sudo systemctl restart neo4j
 sudo systemctl status neo4j
 ```
 
-To test whether APOC has been properly installed, refresh the neo4j browser (accessed using port 7474). This is supposed to work but doesn't for me: `RETURN apoc.version() AS output;`
+To test whether APOC has been properly installed, refresh the neo4j browser (accessed using port 7474) and run a test command. 
+
+This is supposed to work but doesn't for me: `RETURN apoc.version() AS output;`
 
 However, this does work for me:
+
 ```
 WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/4.0/src/test/resources/person.json' AS url
 
@@ -177,9 +180,9 @@ MERGE (p:Person {name:person.name})
    ON CREATE SET p.age = person.age, p.children = size(person.children);
 ```
 
-To clear the database, enter the command: `MATCH (n) DETACH DELETE n`
-
 If it installed one node with label: Person, then APOC is working.
+
+To clear the database, run the command: `MATCH (n) DETACH DELETE n`
 
 ### update memory
 
