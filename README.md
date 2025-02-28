@@ -76,8 +76,8 @@ sudo apt update && sudo apt install -y wget
 wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
 echo 'deb https://debian.neo4j.com stable 5' | sudo tee /etc/apt/sources.list.d/neo4j.list
 sudo apt update
-apt list -a neo4j // to see what versions are available to install
-sudo apt-get install neo4j=1:5.26.3 // or whatever is the latest stable version
+apt list -a neo4j # to see what versions are available to install
+sudo apt-get install neo4j=1:5.26.3 # or whatever is the latest stable version
 ```
 
 ```
