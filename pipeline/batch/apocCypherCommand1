@@ -1,5 +1,5 @@
 CALL apoc.periodic.iterate(
-        "CALL apoc.load.json('file:///eventsToTransferForInitialization.json') YIELD value AS line",
+        "CALL apoc.load.json('file:///followsToAddToNeo4j.json') YIELD value AS line",
         "
         MERGE (u1:NostrUser {pubkey:line.pk_follower})
         MERGE (u2:NostrUser {pubkey:line.pk_followee})
