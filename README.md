@@ -205,7 +205,13 @@ maxFilterLimit = 300000 (just something big)
 * change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
 
 * keep user: ubuntu rather than make new user strfry
- 
+
+### strfry router
+
+This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
+
+
+
 ## hasenpfeffr
 
 Set up the pipeline from strfry to neo4j. scripts being written.
@@ -214,14 +220,20 @@ Set up the pipeline from strfry to neo4j. scripts being written.
 sudo apt update
 
 cd ~/hasenpfeffr
+```
+### setup hasenpfeffr.conf
 
-# setup hasenpfeffr.conf
+Edit hasenpfeffr.conf to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
+TODO: make these env variables.
+
+```
 sudo mv ~/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
-(edit hasenpfeffr.conf to update neo4j password and primary user pubkey)
+```
 
-# activate the strfry plugin
+### activate the strfry plugin
 
+```
 # update strfry.conf
 
 # set up strfry router
