@@ -63,7 +63,7 @@ git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 
 ## neo4j
 
-Install neo4j. These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation)).
+Install neo4j. (These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation)).
 
 We will be installing neo4j community edition, neo4j graph data science, and APOC. If neo4j won't start and you don't know why, it could be due to incompatible versions of these 3 libraries, especially if your habit is to install latest stable version. I have specified versions in the steps below which have worked together for me.
 
