@@ -286,7 +286,7 @@ You should see the files disappearing from `~/hasenpfeffr/pipeline/stream$/queue
 
 ```
 cd ~/hasenpfeffr/pipeline/batch
-sudo chmod +x load.sh
+sudo chmod +x transfer.sh
 
 sudo chmod +x strfryToKind3Events.sh
 sudo chmod +x kind3EventsToFollows.sh
