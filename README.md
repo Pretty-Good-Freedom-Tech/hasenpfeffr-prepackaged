@@ -86,6 +86,8 @@ sudo systemctl status neo4j
 sudo systemctl enable neo4j
 ```
 
+You can also check the neo4j status with `neo4j status`.
+
 Changes to neo4j.conf
 ```
 sudo cp /etc/neo4j/neo4j.conf /etc/neo4j/neo4j.conf.backup
@@ -113,7 +115,7 @@ You should now be able to access neo4j on the browser using port 7474: `http://x
 ```
 cd /var/lib/neo4j/plugins/
 sudo wget https://github.com/neo4j/graph-data-science/releases/download/2.13.2/neo4j-graph-data-science-2.13.2.jar
-ls -la // to verify presence of neo4j-graph-data-science-2.13.2.jar
+ls -la # to verify presence of neo4j-graph-data-science-2.13.2.jar
 sudo chown neo4j:neo4j neo4j-graph-data-science-2.13.2.jar
 ```
 
