@@ -1,5 +1,6 @@
-A script which will reconcile the Neo4j database with kind 3 events in strfry relay.
+A script which will reconcile the Neo4j database with kind 3 events in strfry relay. The method is to create a list of pubkeys whose kind3EventId in nen4j does not match the kind3EventId in strfry. these pubkeys will be added to reconcile/queue and processed one at a time.
 
+The first step is to find discrepancies between the kind3 ev
 Create two json files called `neo4jSnapshot.json` and `strfrySnapshot.json`. Each file will have the same format:
 
 {
