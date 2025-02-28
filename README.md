@@ -55,7 +55,7 @@ SSH into your instance and proceed with the steps below.
 
 ### ports
 
-7474 and 7687
+Configure the EC2 security group to allow incoming traffic on ports 7474 and 7687.
 
 ## download hasenpfeffr
 
