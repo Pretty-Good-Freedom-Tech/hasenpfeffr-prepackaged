@@ -22,9 +22,9 @@ sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD"  "$CYPHE
 
 # get current kind 3 event from strfry
 
-sudo strfry scan "{ \"kinds\": [3], \"authors\": [\"$pk_follower\"]}" > kind3Events
+sudo strfry scan "{ \"kinds\": [3], \"authors\": [\"$pk_follower\"]}" > /home/ubuntu/hasenpfeffr/pipeline/stream/kind3Events
 
-read -r kind3Event < kind3Events
+read -r kind3Event < /home/ubuntu/hasenpfeffr/pipeline/stream/kind3Events
 
 EVENT_ID=$(echo $kind3Event | jq '.id' | tr -d '"')
 PUBKEY=$(echo $kind3Event | jq '.pubkey' | tr -d '"')
