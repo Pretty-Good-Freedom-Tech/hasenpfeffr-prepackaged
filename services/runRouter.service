@@ -1,0 +1,8 @@
+[Unit]
+Description=strfry router for continuous streaming of follows, mutes and reports
+
+[Service]
+ExecStart=sudo strfry router /etc/strfry-router.config 
+
+[Install]
+WantedBy=multi-user.target
