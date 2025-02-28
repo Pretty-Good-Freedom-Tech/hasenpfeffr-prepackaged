@@ -2,7 +2,7 @@
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 
-> eventsToTransferForInitialization.json
+> followsToAddToNeo4j.json
 
 totNumberOfEvents=$(wc -l allKind3EventsStripped.json)
 
@@ -28,8 +28,8 @@ cat allKind3EventsStripped.json | while read line; do
             }
         }
     } catch (e) {
-    }" >> eventsToTransferForInitialization.json
+    }" >> followsToAddToNeo4j.json
 done
 
-sudo mv eventsToTransferForInitialization.json /var/lib/neo4j/import/eventsToTransferForInitialization.json
+sudo mv followsToAddToNeo4j.json /var/lib/neo4j/import/followsToAddToNeo4j.json
 sudo mv allKind3EventsStripped.json /var/lib/neo4j/import/allKind3EventsStripped.json
