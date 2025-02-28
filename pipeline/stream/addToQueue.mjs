@@ -9,15 +9,15 @@ useWebSocketImplementation(WebSocket)
 
 dotenv.config();
 
-console.log('HERE 1')
-
-const myRelay = process.env.HASENPFEFFR_RELAY_URL || 'wss://relay4.hasenpfeffr.com';
-
-console.log('myRelay: '+ myRelay)
+const myRelay = process.env.HASENPFEFFR_RELAY_URL || 'wss://relay.hasenpfeffr.com'
 
 const explicitRelayUrls = [ myRelay ]
 
-const pathToQueue = '/home/ubuntu/hasenpfeffr/pipeline/stream/queue/';
+const pathToQueue = '/home/ubuntu/hasenpfeffr/pipeline/stream/queue/'
+
+const ndk = new NDK({explicitRelayUrls})
+
+const filter = { kinds: [3], limit: 0 }
 
 // create file with pubkey as the name; this way, if multiple follows happen in rapid fire succession,
 // we only process that pubkey one time
@@ -32,10 +32,6 @@ const addEventToQueue = (event) => {
       }
     });
 }
-
-const ndk = new NDK({explicitRelayUrls})
-
-const filter = { kinds: [3], limit: 0 }
 
 const runListener = async () => {
   await ndk.connect()
