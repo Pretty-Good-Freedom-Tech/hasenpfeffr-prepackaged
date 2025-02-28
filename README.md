@@ -210,11 +210,14 @@ maxFilterLimit = 300000 (just something big)
 
 This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
 
+Edit the router config: `sudo nano ~/hasenpfeffr/setup/strfry-router.config`
 
+```
+sudo mv ~/hasenpfeffr/setup/strfry-router.config /etc/strfry-router.config
+sudo chown strfry:strfry /etc/strfry-router.config
+```
 
 ## hasenpfeffr
-
-Set up the pipeline from strfry to neo4j. scripts being written.
 
 ```
 sudo apt update
