@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # This takes several hours and loads all kind 3 events into strfry from scratch
-# the --recent option on the createAllKind3EventsStripped.sh only transfers the most recent events
+# The basic command transfers ALL kind 3 events.
+# sudo ./transfer.sh
+# optional parameters: --recent followed by an integer which is how far back. eg to transfer all events from the past 24 hours, execute:
+# sudo ./transfer.sh --recent 86400
+# Notably, this script will not delete FOLLOWS that need to be deleted due to unfollowing. For that, use the reconcile module.
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 
