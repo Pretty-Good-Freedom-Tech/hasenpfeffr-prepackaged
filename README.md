@@ -210,7 +210,7 @@ maxFilterLimit = 300000 (just something big)
 
 This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
 
-Edit the router config: `sudo nano ~/hasenpfeffr/setup/strfry-router.config`
+Review the router config: `sudo nano ~/hasenpfeffr/setup/strfry-router.config`; edit the relay list if desired. Later we will uncomment the plugin.
 
 Move router config:
 
