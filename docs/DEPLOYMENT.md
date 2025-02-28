@@ -204,6 +204,10 @@ sudo systemctl status runRouter.service
 
 To see if downloads are happening, check how many events are in strfry using `sudo strfry scan --count '{}'` 
 
+Setup plugin:
+
+`sudo nano /etc/strfry.conf` and set `relay.writePolicy.plugin` to `/home/ubuntu/hasenpfeffr/plugins/hasenpfeffr.js`.
+
 ## hasenpfeffr
 
 ```
