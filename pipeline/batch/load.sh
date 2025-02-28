@@ -4,8 +4,8 @@
 # the --recent option on the createAllKind3EventsStripped.sh only transfers the most recent events
 
 sudo ./strfryToKind3Events.sh "$1" "$2"
-sudo ./kind3EventsToJson.sh
-sudo ./loadJsonIntoNeo4j.sh
+sudo ./kind3EventsToFollows.sh
+sudo ./followsToNeo4j.sh
 sudo ./updateNostrUserKind3Data.sh
 
 # clean up
