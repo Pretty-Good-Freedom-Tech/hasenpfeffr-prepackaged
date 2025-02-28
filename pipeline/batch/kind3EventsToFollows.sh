@@ -2,34 +2,12 @@
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 
-> followsToAddToNeo4j.json
+# Change to the directory containing the script
+cd /home/ubuntu/hasenpfeffr/pipeline/batch/
 
-totNumberOfEvents=$(wc -l allKind3EventsStripped.json)
+# Run the optimized Node.js script
+node optimized_kind3EventsToFollows.js
 
-eventCounter=0
-cat allKind3EventsStripped.json | while read line; do
-    ((eventCounter++))
-    eventCounterMod=$(($eventCounter % 100))
-    if [[ "$eventCounterMod" = 0 ]]; then
-        echo "processing event $eventCounter out of $totNumberOfEvents"
-    fi
-    sudo node -e "try {
-        const oEvent = JSON.parse('$line');
-        const pk_follower = oEvent.pubkey
-        const aTags = oEvent.tags
-        for (x=0; x< aTags.length; x++) {
-            const tag = aTags[x]
-            if (tag[0] == 'p') {
-                const pk_followee = tag[1]
-                const nextLine = {
-                    pk_follower, pk_followee
-                }
-                console.log(JSON.stringify(nextLine))
-            }
-        }
-    } catch (e) {
-    }" >> followsToAddToNeo4j.json
-done
-
+# Move files to Neo4j import directory
 sudo mv followsToAddToNeo4j.json /var/lib/neo4j/import/followsToAddToNeo4j.json
 sudo mv allKind3EventsStripped.json /var/lib/neo4j/import/allKind3EventsStripped.json
