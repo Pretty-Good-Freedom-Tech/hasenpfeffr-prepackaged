@@ -11,6 +11,8 @@ CYPHER3="MATCH (u1:NostrUser)-[:FOLLOWS]->(u2:NostrUser) WHERE u2.hops - u1.hops
 
 numHops=1
 
+echo "$(date): Starting calculateHops" >> /var/log/hasenpfeffr/calculateHops.log
+
 sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER1"
 sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER2"
 cypherResults=$(sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER3")
@@ -22,3 +24,5 @@ do
     cypherResults=$(sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER3")
     numUpdates="${cypherResults:11}"
 done
+
+echo "$(date): Finished calculateHops" >> /var/log/hasenpfeffr/calculateHops.log
