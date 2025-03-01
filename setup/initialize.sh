@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# commands to run at startup
+# commands to run one time at initialization
 
 sudo apt update
 sudo apt install npm
@@ -11,14 +11,15 @@ sudo npm install -g @nostr-dev-kit/ndk nostr-tools ws websocket-polyfill fs dote
 # sudo npm install @nostr-dev-kit/ndk
 # sudo npm install ws
 
+# hasenfeffr.conf 
+
 sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
-sudo chown root:root /etc/hasenpfeffr.conf
+# sudo chown root:root /etc/hasenpfeffr.conf
 
 # add neo4j constraints and indexes
 
-cd ~/hasenpfeffr/setup
-sudo chmod +x neo4jCommandsAndIndices.sh
-sudo ./neo4jCommandsAndIndices.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
+sudo /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
 
 ## stream
 
