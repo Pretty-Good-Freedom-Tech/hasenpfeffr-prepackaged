@@ -2,6 +2,8 @@
 
 source /etc/hasenpfeffr.conf # NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, GRAPEVINE_REFERENCE_PUBKEY
 
+echo "$(date): Starting personalizedPageRank" >> /var/log/hasenpfeffr/personalizedPageRank.log
+
 echo "GRAPEVINE_REFERENCE_PUBKEY: $GRAPEVINE_REFERENCE_PUBKEY"
 
 CYPHER1="
@@ -34,3 +36,5 @@ sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER
 
 # once personalizedPageRank scores are updated in neo4j (above), call the script that updates the plugin whitelist:
 sudo /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
+
+echo "$(date): Finished personalizedPageRank" >> /var/log/hasenpfeffr/personalizedPageRank.log
