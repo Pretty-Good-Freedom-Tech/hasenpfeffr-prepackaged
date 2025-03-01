@@ -378,6 +378,9 @@ These updates should trigger update of strfry filters and plugins.
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
+
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
 ```
 
 ### hops
