@@ -204,7 +204,7 @@ async function processPubkey(pubkey) {
     
     // Step 7: Update the kind3EventId and kind3CreatedAt properties
     const updateQuery = `
-      MATCH (u:NostrUser {pubkey:'${pubkey}'})
+      MERGE (u:NostrUser {pubkey:'${pubkey}'})
       SET u.kind3EventId='${eventId}', u.kind3CreatedAt=${createdAt}
     `;
     
