@@ -1,1 +1,8 @@
+[Unit]
+Description=calculate personalizedPageRank and store scores in Neo4j
 
+[Service]
+ExecStart=sudo strfry router /etc/strfry-router.config 
+
+[Install]
+WantedBy=multi-user.target
