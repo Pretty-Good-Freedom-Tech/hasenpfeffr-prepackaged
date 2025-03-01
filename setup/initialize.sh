@@ -16,11 +16,6 @@ sudo npm install -g @nostr-dev-kit/ndk nostr-tools ws websocket-polyfill fs dote
 sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
 # sudo chown root:root /etc/hasenpfeffr.conf
 
-# add neo4j constraints and indexes
-
-sudo chmod +x /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
-sudo /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
-
 #############################################
 ############### ETL PIPELINE ################
 
