@@ -1,1 +1,3 @@
-# chmod, mv commands
+#!/bin/bash
+
+# various chmod, chown and mv commands
