@@ -89,7 +89,7 @@ To test whether gds has been properly installed, refresh the neo4j browser (acce
 
 In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
 
-### install apoc
+### Install Neo4j APOC
 
 We will be using [Neo4j Awesome Procedures On Cypher (APOC)](https://neo4j.com/labs/apoc/) to efficient loading of large batches of data into neo4j.
 
