@@ -39,3 +39,8 @@ These instructions assume you SSH into your instance as ubuntu, and `cd ~` is eq
 cd ~
 git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 ```
+
+Once completed, proceed with the following steps, in order:
+- STEP 1: install and configure Neo4j
+- STEP 2: install and configure strfry
+- STEP 3: install and configure hasenpfeffr
