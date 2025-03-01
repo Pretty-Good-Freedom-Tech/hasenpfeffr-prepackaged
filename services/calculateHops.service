@@ -1,8 +1,18 @@
 [Unit]
-Description=calculate Hops (degrees of separation) and store as hops property in Neo4j
+Description=Calculate Hops in Nostr Network
+After=network.target neo4j.service
 
 [Service]
-ExecStart=sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
+Type=oneshot
+User=ubuntu
+EnvironmentFile=/etc/hasenpfeffr.conf
+ExecStart=/home/ubuntu/hasenpfeffr/algos/calculateHops.sh
+# Set resource limits to prevent excessive resource usage
+CPUQuota=80%
+MemoryLimit=2G
+# Add additional security measures
+ProtectSystem=full
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
