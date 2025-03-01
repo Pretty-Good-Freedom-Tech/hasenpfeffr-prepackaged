@@ -370,58 +370,9 @@ Parameters:
 `OnUnitActiveSec` (in the timer file) Timer Frequency: How often to run the queue processing (default: every 30 minutes)
 
 
+## Services to run grapevine and dos periodically
+
+These updates should trigger update of strfry filters and plugins.
 
 
 
-
-## MISC
-```
-
-# negentropy to sync with relay.primal.net
-
-# batch load strfry into neo4j
-
-sudo ~/hasenpfeffr/pipeline/batch/load.sh
-
-# set up live streaming into neo4j
-
-## systemctl: addToQueue, which listens to relay and adds pubkeys to queue
-
-sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
-sudo systemctl enable addToQueue.service
-sudo systemctl start addToQueue
-sudo systemctl status addToQueue
-
-cd ~/hasenpfeffr/pipeline/stream/queue
-ls -Rltr ; ls -1 | wc -l
-(Check to see that pubkeys are being added to the queue)
-
-## systemctl: processQueue, which listens to queue and updates pubkey one at a time (not working yet)
-
-sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
-
-sudo systemctl enable processQueue.service
-sudo systemctl start processQueue
-sudo systemctl status processQueue
-
-cd ~/hasenpfeffr/pipeline/stream/queue
-ls -Rltr ; ls -1 | wc -l
-(Check to see that pubkeys are disappearing from the queue)
-
-# batch load strfry into neo4j for the past 24 hours (indicate time in seconds)
-
-sudo ~/hasenpfeffr/pipeline/batch/load.sh --recent 86400
-
-```
-
-also:
-
-Update strfry filters and plugins. scripts being written.
-
-## grapevine
-
-calculate personalized web of trust scores. scripts being written.
-
-## brainstorm
-
-Organize the graph database into a knowledge graph. scripts being written. (Initial versions of this product may not need this yet.)
