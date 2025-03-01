@@ -40,6 +40,8 @@ cd ~
 git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 ```
 
+Edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update GRAPEVINE_REFERENCE_PUBKEY and HASENPFEFFR_RELAY_URL
+
 Once completed, proceed with the following steps, in order:
 - STEP 1: install and configure Neo4j
 - STEP 2: install and configure strfry
