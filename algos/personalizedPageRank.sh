@@ -33,4 +33,4 @@ sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER
 sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER3"
 
 # once personalizedPageRank scores are updated in neo4j (above), call the script that updates the plugin whitelist:
-sudo ./exportWhitelist.sh
+sudo /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
