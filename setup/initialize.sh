@@ -2,16 +2,22 @@
 
 # commands to run one time at initialization
 
+#############################################
+############### DEPENDENCIES ################
+
 sudo apt update
 sudo apt install npm
 sudo npm install -g @nostr-dev-kit/ndk nostr-tools ws websocket-polyfill fs dotenv
 
-# cd ~/hasenpfeffr
-# sudo npm install dotenv
-# sudo npm install @nostr-dev-kit/ndk
-# sudo npm install ws
+sudo apt update
+sudo apt upgrade
 
-# hasenfeffr.conf 
+#############################################
+############### STRFRY ROUTER ################
+
+sudo mv /home/ubuntu/hasenpfeffr/services/runRouter.service /etc/systemd/system/runRouter.service
+
+sudo systemctl enable runRouter.service
 
 sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
 # sudo chown root:root /etc/hasenpfeffr.conf
@@ -32,8 +38,6 @@ sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue
 sudo chown root:root /etc/systemd/system/addToQueue.service
 
 sudo systemctl enable addToQueue.service
-sudo systemctl start addToQueue.service
-sudo systemctl status addToQueue.service
 
 # processQueue
 
@@ -41,8 +45,6 @@ sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQ
 sudo chown root:root /etc/systemd/system/processQueue.service
 
 sudo systemctl enable processQueue.service
-sudo systemctl start processQueue.service
-sudo systemctl status processQueue.service
 
 ############### batch 
 
@@ -69,8 +71,6 @@ sudo chown root:root /etc/systemd/system/runReconciliation.timer
 sudo systemctl daemon-reload
 
 sudo systemctl enable runReconciliation.timer
-sudo systemctl start runReconciliation.timer
-sudo systemctl status runReconciliation.timer
 
 # process queue
 
@@ -80,11 +80,9 @@ sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.timer /etc/syste
 sudo chown root:root /etc/systemd/system/processReconcileQueue.service
 sudo chown root:root /etc/systemd/system/processReconcileQueue.timer
 
-sudo systemctl daemon-reload
+
 
 sudo systemctl enable processReconcileQueue.timer
-sudo systemctl start processReconcileQueue.timer
-sudo systemctl status processReconcileQueue.timer
 
 #############################################
 ################### ALGOS ###################
@@ -102,8 +100,6 @@ sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.service /etc/systemd/sys
 sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.timer /etc/systemd/system/calculateHops.timer
 
 sudo systemctl enable calculateHops.timer
-sudo systemctl start calculateHops.timer
-sudo systemctl status calculateHops.timer
 
 # personalizedPageRank
 
@@ -111,15 +107,10 @@ sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.service /etc/syst
 sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.timer /etc/systemd/system/personalizedPageRank.timer
 
 sudo systemctl enable personalizedPageRank.timer
-sudo systemctl start personalizedPageRank.timer
-sudo systemctl status personalizedPageRank.timer
-
-
-
-
-
 
 # various chmod, chown and mv commands to do at startup
+
+sudo systemctl daemon-reload
 
 # create log files
 sudo mkdir /var/log/hasenpfeffr
