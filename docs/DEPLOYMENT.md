@@ -370,7 +370,7 @@ Parameters:
 `OnUnitActiveSec` (in the timer file) Timer Frequency: How often to run the queue processing (default: every 30 minutes)
 
 
-## Services to run grapevine and dos periodically
+## Services to calculate personalizedPageRank and hops periodically (to add: personalizedGrapeRank)
 
 These updates should trigger update of strfry filters and plugins.
 
