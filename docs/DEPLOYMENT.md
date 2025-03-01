@@ -350,8 +350,8 @@ Adjust Timer: You can adjust the frequency in the timer file based on your needs
 Service to process the queue:
 
 ```
-sudo mv ~/hasenpfeffr/services/processReconcileQueue.service /etc/systemd/system/processReconcileQueue.service
-sudo mv ~/hasenpfeffr/services/processReconcileQueue.timer /etc/systemd/system/processReconcileQueue.timer
+sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.service /etc/systemd/system/processReconcileQueue.service
+sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.timer /etc/systemd/system/processReconcileQueue.timer
 
 sudo chown root:root /etc/systemd/system/processReconcileQueue.service
 sudo chown root:root /etc/systemd/system/processReconcileQueue.timer
@@ -373,6 +373,42 @@ Parameters:
 ## Services to run grapevine and dos periodically
 
 These updates should trigger update of strfry filters and plugins.
+
+```
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
+```
+
+### hops
+
+Execute the following query: `MATCH (u:NostrUser) WHERE u.hops IS NOT NULL return count(u)` the result should be zero.
+
+Now run `sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh`, which should take a few minutes. Execute the above query, as well as `MATCH (u:NostrUser) WHERE u.hops = 1 return count(u)` using different values for u.hops.
+
+Set up the `calculateHops` service:
+
+```
+sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.service /etc/systemd/system/calculateHops.service
+sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.timer /etc/systemd/system/calculateHops.timer
+
+sudo systemctl enable calculateHops.timer
+sudo systemctl start calculateHops.timer
+sudo systemctl status calculateHops.timer
+```
+
+### personalizedPageRank
+
+Set up the `personalizedPageRank` service:
+
+```
+sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.service /etc/systemd/system/personalizedPageRank.service
+sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.timer /etc/systemd/system/personalizedPageRank.timer
+
+sudo systemctl enable personalizedPageRank.timer
+sudo systemctl start personalizedPageRank.timer
+sudo systemctl status personalizedPageRank.timer
+```
 
 ## Summary of services that should be running
 
