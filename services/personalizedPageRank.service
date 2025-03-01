@@ -2,7 +2,7 @@
 Description=calculate personalizedPageRank and store scores in Neo4j
 
 [Service]
-ExecStart=sudo strfry router /etc/strfry-router.config 
+ExecStart=sudo /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
 
 [Install]
 WantedBy=multi-user.target
