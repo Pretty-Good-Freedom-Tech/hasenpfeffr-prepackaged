@@ -146,7 +146,7 @@ async function processPubkey(pubkey) {
       }
     }
 
-  console.log(`${new Date().toISOString()}: Pubkey ${pubkey} follows ${followees.length} users`);
+    console.log(`${new Date().toISOString()}: Pubkey ${pubkey} follows ${followees.length} users`);
     
     // Step 3: Generate follows JSON
     const follows = followees.map(followee => ({
@@ -202,7 +202,7 @@ async function processPubkey(pubkey) {
     // Execute the query
     await exec(`sudo cypher-shell -a "${config.neo4jUri}" -u "${config.neo4jUser}" -p "${config.neo4jPassword}" -f ${tempQueryFile}`);
     
-// Step 7: Update the kind3EventId and kind3CreatedAt properties
+    // Step 7: Update the kind3EventId and kind3CreatedAt properties
     const updateQuery = `
       MATCH (u:NostrUser {pubkey:'${pubkey}'})
       SET u.kind3EventId='${eventId}', u.kind3CreatedAt=${createdAt}
