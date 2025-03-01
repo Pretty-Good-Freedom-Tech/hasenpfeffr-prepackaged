@@ -1,9 +1,16 @@
 Install and configure hasenpfeffr
 =====
 
+First, run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
+
+```
+sudo chmnod +x /home/ubuntu/hasenpfeffr/setup/initialize.sh
+sudo /home/ubuntu/hasenpfeffr/setup/initialize.sh
+```
+
 ### setup hasenpfeffr.conf
 
-Edit hasenpfeffr.conf using `sudo nano ~/hasenpfeffr/setup/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
+Edit hasenpfeffr.conf using `sudo nano /etc/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
 
 In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
