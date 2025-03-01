@@ -1,6 +1,8 @@
 Install and configure hasenpfeffr
 =====
 
+# Basic setup
+
 First, run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
 
 ```
@@ -8,9 +10,11 @@ sudo chmnod +x /home/ubuntu/hasenpfeffr/setup/initialize.sh
 sudo /home/ubuntu/hasenpfeffr/setup/initialize.sh
 ```
 
-### setup hasenpfeffr.conf
+## setup hasenpfeffr.conf
 
 If not already done, open hasenpfeffr.conf using `sudo nano /etc/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
+
+# Setup ETL (Extract, Transform, Load) Pipeline from strfry to Neo4j
 
 ## stream follows into neo4j
 
@@ -49,17 +53,13 @@ sudo systemctl status processQueue.service
 
 One service to create the queue; one service to process the queue. Each service is on a timer.
 
-
 Parameters:
 
 `batchSize: 10` Batch Size: The number of pubkeys to process in each batch (default: 10)
 `maxConcurrent: 3` Concurrency Limit: Maximum number of pubkeys to process simultaneously (default: 3)
 `OnUnitActiveSec` (in the timer file) Timer Frequency: How often to run the queue processing (default: every 30 minutes)
 
-
-## Services to calculate personalizedPageRank and hops periodically (to add: personalizedGrapeRank)
-
-These updates should trigger update of strfry filters and plugins.
+# Calculate Webs of Trust
 
 ### hops
 
@@ -68,6 +68,8 @@ Execute the following query: `MATCH (u:NostrUser) WHERE u.hops IS NOT NULL retur
 Now run `sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh`, which should take a few minutes. Execute the above query, as well as `MATCH (u:NostrUser) WHERE u.hops = 1 return count(u)` using different values for u.hops.
 
 ### personalizedPageRank
+
+These updates should trigger update of strfry filters and plugins.
 
 # Startup
 
