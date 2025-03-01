@@ -77,6 +77,10 @@ sudo systemctl status neo4j
 To test whether gds has been properly installed, refresh the neo4j browser (accessed using port 7474) and enter this in the command line on the top:
 `RETURN gds.version()`
 
+### Neo4j constraints and indices
+
+In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
+
 ### install apoc
 
 ```
