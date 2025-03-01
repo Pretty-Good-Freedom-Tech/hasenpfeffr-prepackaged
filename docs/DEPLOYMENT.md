@@ -320,6 +320,61 @@ sudo systemctl status addToQueue.service
 sudo systemctl status processQueue.service
 ```
 
+## reconcile pipeline module
+
+One service to create the queue; one service to process the queue. Each service is on a timer.
+
+```
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/processReconcileQueue.js
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/runReconciliation.js
+```
+
+Service to generate the queue:
+
+```
+sudo mv ~/hasenpfeffr/services/runReconciliation.service /etc/systemd/system/runReconciliation.service
+sudo mv ~/hasenpfeffr/services/runReconciliation.timer /etc/systemd/system/runReconciliation.timer
+
+sudo chown root:root /etc/systemd/system/runReconciliation.service
+sudo chown root:root /etc/systemd/system/runReconciliation.timer
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable runReconciliation.timer
+sudo systemctl start runReconciliation.timer
+sudo systemctl status runReconciliation.timer
+```
+
+Adjust Timer: You can adjust the frequency in the timer file based on your needs. Currently set to run every 6 hours.
+
+Service to process the queue:
+
+```
+sudo mv ~/hasenpfeffr/services/processReconcileQueue.service /etc/systemd/system/processReconcileQueue.service
+sudo mv ~/hasenpfeffr/services/processReconcileQueue.timer /etc/systemd/system/processReconcileQueue.timer
+
+sudo chown root:root /etc/systemd/system/processReconcileQueue.service
+sudo chown root:root /etc/systemd/system/processReconcileQueue.timer
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable processReconcileQueue.timer
+sudo systemctl start processReconcileQueue.timer
+sudo systemctl status processReconcileQueue.timer
+```
+
+Parameters:
+
+`batchSize: 10` Batch Size: The number of pubkeys to process in each batch (default: 10)
+`maxConcurrent: 3` Concurrency Limit: Maximum number of pubkeys to process simultaneously (default: 3)
+`OnUnitActiveSec` (in the timer file) Timer Frequency: How often to run the queue processing (default: every 30 minutes)
+
+
+
+
+
+
+## MISC
 ```
 
 # negentropy to sync with relay.primal.net
