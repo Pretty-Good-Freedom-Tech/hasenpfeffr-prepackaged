@@ -10,8 +10,7 @@ sudo /home/ubuntu/hasenpfeffr/setup/initialize.sh
 
 ### setup hasenpfeffr.conf
 
-Edit hasenpfeffr.conf using `sudo nano /etc/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
-
+If not already done, open hasenpfeffr.conf using `sudo nano /etc/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
 In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
 
