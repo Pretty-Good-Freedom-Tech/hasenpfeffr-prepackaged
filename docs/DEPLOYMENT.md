@@ -33,6 +33,9 @@ Configure the EC2 security group to allow incoming traffic on ports 7474 and 768
 
 This has a few files we will need during the following steps.
 
+These instructions assume you SSH into your instance as ubuntu, and `cd ~` is equivalent to `cd /home/ubuntu`.
+
 ```
+cd ~
 git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 ```
