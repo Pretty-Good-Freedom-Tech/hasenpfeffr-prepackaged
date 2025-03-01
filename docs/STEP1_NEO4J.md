@@ -48,11 +48,22 @@ sudo systemctl status neo4j
 
 Then configure the EC2 security group next to allow incoming traffic on ports 7474 and 7687.
 
-You should now be able to access neo4j on the browser using port 7474: `http://x.x.x.x:7474` or `http://relay.myCoolSite.com:7474`. Log on with username: neo4j and password: neo4j. It should prompt you to change the password.
+You should now be able to access neo4j on the browser using port 7474: `http://x.x.x.x:7474` or `http://relay.myCoolSite.com:7474`. Log on with username: neo4j and password: neo4j. It should prompt you to change the password. Once you've changed the paswword, edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update NEO4J_PASSWORD (as well as GRAPEVINE_REFERENCE_PUBKEY and HASENPFEFFR_RELAY_URL while you're here).
 
-Edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
+If you want, play around with the Neo4j tutorials. 
 
-### install neo4j graph data science
+### Neo4j constraints and indices
+
+Set up the database with two node labels, NostrUser and NostrEvent, and some of the properties we will be using.
+
+```
+sudo chmod +x /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
+sudo /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
+```
+
+### install Neo4j graph data science
+
+We will be using [Neo4j graph data science](https://neo4j.com/product/graph-data-science/) to calculate personalized PageRank.
 
 ```
 cd /var/lib/neo4j/plugins/
@@ -62,7 +73,6 @@ sudo chown neo4j:neo4j neo4j-graph-data-science-2.13.2.jar
 ```
 
 Then go back into `sudo nano /etc/neo4j/neo4j.conf` and make the following changes:
-
 
 ```
 dbms.security.procedures.unrestricted=gds.*
@@ -77,11 +87,11 @@ sudo systemctl status neo4j
 To test whether gds has been properly installed, refresh the neo4j browser (accessed using port 7474) and enter this in the command line on the top:
 `RETURN gds.version()`
 
-### Neo4j constraints and indices
-
 In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
 
 ### install apoc
+
+We will be using [Neo4j Awesome Procedures On Cypher (APOC)](https://neo4j.com/labs/apoc/) to efficient loading of large batches of data into neo4j.
 
 ```
 cd /var/lib/neo4j/plugins
