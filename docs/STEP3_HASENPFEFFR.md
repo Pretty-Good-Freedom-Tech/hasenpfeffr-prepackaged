@@ -70,6 +70,19 @@ Now run `sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh`, which should tak
 
 ### personalizedPageRank
 
+# services
+
+```
+sudo systemctl start runRouter.service
+sudo systemctl start addToQueue.service
+sudo systemctl start processQueue.service
+sudo systemctl start runReconciliation.timer
+sudo systemctl start processReconcileQueue.timer
+sudo systemctl start calculateHops.timer
+sudo systemctl start personalizedPageRank.timer
+
+```
+
 ## Summary of services that should be running
 
 Check all services with these commands:
@@ -86,5 +99,7 @@ sudo systemctl status processQueue.service # ? rename to processStreamingQueue
 sudo systemctl status runReconciliation.timer # ? rename to generateReconciliationQueue
 sudo systemctl status processReconcileQueue.timer # ? rename to processReconciliationQueue
 
-# algos: dos, pagerank
+# algos: calculateHops, pagerank
+sudo systemctl status calculateHops.timer
+sudo systemctl status personalizedPageRank.timer
 ```
