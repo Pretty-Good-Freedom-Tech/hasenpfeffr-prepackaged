@@ -67,20 +67,15 @@ Execute the following query: `MATCH (u:NostrUser) WHERE u.hops IS NOT NULL retur
 
 Now run `sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh`, which should take a few minutes. Execute the above query, as well as `MATCH (u:NostrUser) WHERE u.hops = 1 return count(u)` using different values for u.hops.
 
-
 ### personalizedPageRank
 
-# services
+# Startup
+
+This updates and restarts all systemd services.
 
 ```
-sudo systemctl start runRouter.service
-sudo systemctl start addToQueue.service
-sudo systemctl start processQueue.service
-sudo systemctl start runReconciliation.timer
-sudo systemctl start processReconcileQueue.timer
-sudo systemctl start calculateHops.timer
-sudo systemctl start personalizedPageRank.timer
-
+sudo chmod +x /home/ubuntu/hasenpfeffr/setup/startup.sh
+sudo /home/ubuntu/hasenpfeffr/setup/startup.sh
 ```
 
 ## Summary of services that should be running
