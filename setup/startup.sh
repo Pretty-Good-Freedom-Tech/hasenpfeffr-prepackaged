@@ -2,6 +2,123 @@
 
 # commands to run at startup
 
+sudo apt update
+sudo apt install npm
+sudo npm install -g @nostr-dev-kit/ndk nostr-tools ws websocket-polyfill fs dotenv
+
+# cd ~/hasenpfeffr
+# sudo npm install dotenv
+# sudo npm install @nostr-dev-kit/ndk
+# sudo npm install ws
+
+sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
+sudo chown root:root /etc/hasenpfeffr.conf
+
+# add neo4j constraints and indexes
+
+cd ~/hasenpfeffr/setup
+sudo chmod +x neo4jCommandsAndIndices.sh
+sudo ./neo4jCommandsAndIndices.sh
+
+## stream
+
+# addToQueue
+
+cd ~/hasenpfeffr/pipeline/stream
+sudo chmod +x addToQueue.mjs
+sudo chmod +x processQueue.sh
+sudo chmod +x updateSingleNostrUser.sh
+
+sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
+sudo chown root:root /etc/systemd/system/addToQueue.service
+
+sudo systemctl enable addToQueue.service
+sudo systemctl start addToQueue.service
+sudo systemctl status addToQueue.service
+
+# processQueue
+
+sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
+sudo chown root:root /etc/systemd/system/processQueue.service
+
+sudo systemctl enable processQueue.service
+sudo systemctl start processQueue.service
+sudo systemctl status processQueue.service
+
+## batch 
+
+cd ~/hasenpfeffr/pipeline/batch
+sudo chmod +x transfer.sh
+
+sudo chmod +x strfryToKind3Events.sh
+sudo chmod +x kind3EventsToFollows.sh
+sudo chmod +x kind3EventsToFollows.js
+
+## reconcile
+
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/processReconcileQueue.js
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/runReconciliation.js
+
+# generate queue
+
+sudo mv ~/hasenpfeffr/services/runReconciliation.service /etc/systemd/system/runReconciliation.service
+sudo mv ~/hasenpfeffr/services/runReconciliation.timer /etc/systemd/system/runReconciliation.timer
+
+sudo chown root:root /etc/systemd/system/runReconciliation.service
+sudo chown root:root /etc/systemd/system/runReconciliation.timer
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable runReconciliation.timer
+sudo systemctl start runReconciliation.timer
+sudo systemctl status runReconciliation.timer
+
+# process queue
+
+sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.service /etc/systemd/system/processReconcileQueue.service
+sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.timer /etc/systemd/system/processReconcileQueue.timer
+
+sudo chown root:root /etc/systemd/system/processReconcileQueue.service
+sudo chown root:root /etc/systemd/system/processReconcileQueue.timer
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable processReconcileQueue.timer
+sudo systemctl start processReconcileQueue.timer
+sudo systemctl status processReconcileQueue.timer
+
+## hops and personalizedPageRank algos
+
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
+
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
+
+# hops
+
+sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.service /etc/systemd/system/calculateHops.service
+sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.timer /etc/systemd/system/calculateHops.timer
+
+sudo systemctl enable calculateHops.timer
+sudo systemctl start calculateHops.timer
+sudo systemctl status calculateHops.timer
+
+# personalizedPageRank
+
+sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.service /etc/systemd/system/personalizedPageRank.service
+sudo mv /home/ubuntu/hasenpfeffr/services/personalizedPageRank.timer /etc/systemd/system/personalizedPageRank.timer
+
+sudo systemctl enable personalizedPageRank.timer
+sudo systemctl start personalizedPageRank.timer
+sudo systemctl status personalizedPageRank.timer
+
+
+
+
+
+
 # various chmod, chown and mv commands to do at startup
 
 # create log files
