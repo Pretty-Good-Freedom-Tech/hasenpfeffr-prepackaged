@@ -21,7 +21,10 @@ sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
 sudo chmod +x /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
 sudo /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
 
-## stream
+#############################################
+############### ETL PIPELINE ################
+
+############### stream
 
 # addToQueue
 
@@ -46,7 +49,7 @@ sudo systemctl enable processQueue.service
 sudo systemctl start processQueue.service
 sudo systemctl status processQueue.service
 
-## batch 
+############### batch 
 
 cd ~/hasenpfeffr/pipeline/batch
 sudo chmod +x transfer.sh
@@ -55,7 +58,7 @@ sudo chmod +x strfryToKind3Events.sh
 sudo chmod +x kind3EventsToFollows.sh
 sudo chmod +x kind3EventsToFollows.js
 
-## reconcile
+############### reconcile
 
 sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/processReconcileQueue.js
 sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/runReconciliation.js
@@ -88,7 +91,8 @@ sudo systemctl enable processReconcileQueue.timer
 sudo systemctl start processReconcileQueue.timer
 sudo systemctl status processReconcileQueue.timer
 
-## hops and personalizedPageRank algos
+#############################################
+################### ALGOS ###################
 
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
@@ -97,7 +101,7 @@ sudo chmod +x /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
 
-# hops
+# calculateHops
 
 sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.service /etc/systemd/system/calculateHops.service
 sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.timer /etc/systemd/system/calculateHops.timer
