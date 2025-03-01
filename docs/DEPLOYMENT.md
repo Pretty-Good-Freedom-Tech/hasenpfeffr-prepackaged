@@ -374,5 +374,23 @@ Parameters:
 
 These updates should trigger update of strfry filters and plugins.
 
+## Summary of services that should be running
+
+Check all services with these commands:
+
+```
+# runRouter
+sudo systemctl status runRouter.service
+
+# pipeline: stream
+sudo systemctl status addToQueue.service # ? rename to addToStreamingQueue
+sudo systemctl status processQueue.service # ? rename to processStreamingQueue
+
+# pipeline: reconcile
+sudo systemctl status runReconciliation.timer # ? rename to generateReconciliationQueue
+sudo systemctl status processReconcileQueue.timer # ? rename to processReconciliationQueue
+
+# algos: dos, pagerank
+```
 
 
