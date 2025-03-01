@@ -1,19 +1,21 @@
 Install and configure strfry
 =====
 
-## strfry
-
 Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md).
 
-additional changes to strfry.conf:
-nofiles = 0
-maxFilterLimit = 300000 (just something big)
+We recommend making these changes to strfry.conf:
+- nofiles = 0
+- maxFilterLimit = 300000 (just make it something big)
 
 * change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
 
-* keep user: ubuntu rather than make new user strfry
+* keep user: ubuntu rather than make new user strfry (may deprecate this recommendation)
 
-### strfry router
+## negentropy
+
+
+
+## Setup strfry router
 
 This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
 
@@ -42,3 +44,5 @@ To see if downloads are happening, check how many events are in strfry using `su
 Setup plugin:
 
 `sudo nano /etc/strfry.conf` and set `relay.writePolicy.plugin` to `/home/ubuntu/hasenpfeffr/plugins/hasenpfeffr.js`.
+
+TODO: may setup mesh instead of router.
