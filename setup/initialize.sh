@@ -3,6 +3,13 @@
 # commands to run one time at initialization
 
 #############################################
+############ create log files ###############
+
+sudo mkdir /var/log/hasenpfeffr
+sudo touch /var/log/hasenpfeffr/calculateHops.log
+sudo touch /var/log/hasenpfeffr/personalizedPageRank.log
+
+#############################################
 ############### DEPENDENCIES ################
 
 sudo apt update
@@ -80,8 +87,6 @@ sudo mv /home/ubuntu/hasenpfeffr/services/processReconcileQueue.timer /etc/syste
 sudo chown root:root /etc/systemd/system/processReconcileQueue.service
 sudo chown root:root /etc/systemd/system/processReconcileQueue.timer
 
-
-
 sudo systemctl enable processReconcileQueue.timer
 
 #############################################
@@ -111,15 +116,3 @@ sudo systemctl enable personalizedPageRank.timer
 # various chmod, chown and mv commands to do at startup
 
 sudo systemctl daemon-reload
-
-# create log files
-sudo mkdir /var/log/hasenpfeffr
-sudo touch /var/log/hasenpfeffr/calculateHops.log
-sudo touch /var/log/hasenpfeffr/personalizedPageRank.log
-
-# load CALCULATE_HOPS_TIMER and PERSONALIZED_PAGERANK_TIMER into their respective timers
-sudo /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
-sudo /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
-
-# create update-reconciliation-timer.sh for reconciliation
-# first merge runReconciliaiton and processReconcileQueue into one timer
