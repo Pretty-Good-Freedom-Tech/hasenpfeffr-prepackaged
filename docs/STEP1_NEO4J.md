@@ -48,7 +48,9 @@ sudo systemctl status neo4j
 
 Then configure the EC2 security group next to allow incoming traffic on ports 7474 and 7687.
 
-You should now be able to access neo4j on the browser using port 7474: `http://x.x.x.x:7474` or `http://relay.myCoolSite.com:7474`. Log on with username: neo4j and password: neo4j. It should prompt you to change the password. At a later step, we're going to put the password in a variable (which is accessed by a conf file?).
+You should now be able to access neo4j on the browser using port 7474: `http://x.x.x.x:7474` or `http://relay.myCoolSite.com:7474`. Log on with username: neo4j and password: neo4j. It should prompt you to change the password.
+
+Edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
 ### install neo4j graph data science
 
