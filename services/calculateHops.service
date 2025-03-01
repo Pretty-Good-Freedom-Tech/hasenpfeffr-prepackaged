@@ -1,0 +1,8 @@
+[Unit]
+Description=calculate Hops (degrees of separation) and store as hops property in Neo4j
+
+[Service]
+ExecStart=sudo /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
+
+[Install]
+WantedBy=multi-user.target
