@@ -12,8 +12,6 @@ sudo /home/ubuntu/hasenpfeffr/setup/initialize.sh
 
 If not already done, open hasenpfeffr.conf using `sudo nano /etc/hasenpfeffr.conf` to update GRAPEVINE_REFERENCE_PUBKEY, NEO4J_PASSWORD, and HASENPFEFFR_RELAY_URL
 
-In the neo4j browser, check for for the presence of Neo4j constraints and indexes using `show constraints` and `show indexes`.
-
 ## stream follows into neo4j
 
 We will have two services for this role: one that listens to strfry for new kind 3 notes and adds pubkeys to a queue, and another that processes the pubkeys in the queue.
