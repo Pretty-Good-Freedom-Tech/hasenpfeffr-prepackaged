@@ -25,9 +25,9 @@ sudo apt upgrade
 #############################################
 ############### STRFRY ROUTER ################
 
-sudo mv /home/ubuntu/hasenpfeffr/services/runRouter.service /etc/systemd/system/runRouter.service
-
 sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
+
+sudo mv /home/ubuntu/hasenpfeffr/services/runRouter.service /etc/systemd/system/runRouter.service
 
 #############################################
 ############### ETL PIPELINE ################
@@ -90,6 +90,7 @@ sudo mv /home/ubuntu/hasenpfeffr/services/calculatePersonalizedPageRank.timer /e
 sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-runFullReconciliation-timer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculateHops-timer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculatePersonalizedPageRank-timer.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-strfry-router-config.sh
 
 # enable all services 
 
