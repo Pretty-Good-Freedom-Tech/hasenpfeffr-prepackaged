@@ -1,12 +1,12 @@
 [Unit]
-Description=Nostr Event Reconciliation Service
+Description=Nostr Event Create Reconciliation Queue Service
 After=network.target neo4j.service
 
 [Service]
 Type=oneshot
 User=ubuntu
 EnvironmentFile=/etc/hasenpfeffr.conf
-ExecStart=/home/ubuntu/hasenpfeffr/pipeline/reconcile/runReconciliation.sh
+ExecStart=/home/ubuntu/hasenpfeffr/pipeline/reconcile/createReconciliationQueue.sh
 # Set resource limits to prevent excessive resource usage
 CPUQuota=70%
 MemoryLimit=1G
