@@ -11,10 +11,6 @@ We recommend making these changes to strfry.conf:
 
 * keep user: ubuntu rather than make new user strfry (may deprecate this recommendation)
 
-## negentropy
-
-
-
 ## Setup strfry router
 
 This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
@@ -46,3 +42,7 @@ Setup plugin:
 `sudo nano /etc/strfry.conf` and set `relay.writePolicy.plugin` to `/home/ubuntu/hasenpfeffr/plugins/hasenpfeffr.js`.
 
 TODO: may setup mesh instead of router.
+
+## negentropy
+
+
