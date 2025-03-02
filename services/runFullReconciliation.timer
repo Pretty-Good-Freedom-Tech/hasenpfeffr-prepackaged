@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Nostr Reconciliation Pipeline periodically
+Description=Run Full Reconciliation Pipeline periodically
 After=network.target neo4j.service
 
 [Timer]
