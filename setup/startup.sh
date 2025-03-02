@@ -4,8 +4,9 @@
 ############ scripts that should be rerun at each startup ############
 
 # load CALCULATE_HOPS_TIMER and PERSONALIZED_PAGERANK_TIMER into their respective timers
-sudo /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
-sudo /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
+sudo /home/ubuntu/hasenpfeffr/services/update-calculateHops-timer.sh
+sudo /home/ubuntu/hasenpfeffr/services/update-personalizedPageRank-timer.sh
+sudo /home/ubuntu/hasenpfeffr/services/update-runFullReconciliation-timer.sh
 
 # TODO: create update-reconciliation-timer.sh for reconciliation (first, merge runReconciliaiton and processReconcileQueue together)
 
