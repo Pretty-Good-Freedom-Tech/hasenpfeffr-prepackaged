@@ -7,8 +7,8 @@ Follow these steps (see instructions in this docs folder):
 - STEP 0: setup AWS EC2 Ubuntu server
 - STEP 1: install and configure Neo4j
 - STEP 2: install and configure strfry
-- STEP 3: install and configure hasenpfeffr: ETL pipeline and Webs of Trust calculation
-- STEP 4: startup all background processes
+- STEP 3: install and configure hasenpfeffr and test all actions: ETL pipeline, Webs of Trust calculation, and make scores available using NIP-85 (and later: WoT DVM)
+- STEP 4: setup all actions to run in the background as systemd services
 
 The ETL pipeline of data from strfry to neo4j is comprised of three modules:
 - streaming module (running) - updates neo4j in real time
