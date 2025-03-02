@@ -14,7 +14,7 @@ sudo cypher-shell -a "$NEO4J_URI" -u "$NEO4J_USER" -p "$NEO4J_PASSWORD" "$CYPHER
 
 # create whitelist
 
-> /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json
+touch /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json
 
 echo "{" >> /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json
 
@@ -40,5 +40,6 @@ done < /home/ubuntu/hasenpfeffr/algos/whitelistQueryOutput.txt
 echo "}" >> /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json
 
 sudo mv /hume/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json /home/ubuntu/hasenpfeffr/plugins/whitelist_pubkeys.json
+
 # clean up
 sudo rm /home/ubuntu/hasenpfeffr/algos/whitelistQueryOutput.txt
