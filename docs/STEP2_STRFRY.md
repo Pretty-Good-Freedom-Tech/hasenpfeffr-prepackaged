@@ -11,6 +11,16 @@ We recommend making these changes to strfry.conf:
 
 * keep user: ubuntu rather than make new user strfry (may deprecate this recommendation)
 
+## initialize database
+
+Use negentropy to sync database.
+
+```
+sudo strfry sync wss://relay.primal.net --filter '{"kinds":[3,1984,10000]}'
+```
+
+To verify successful download, use the strfry scan command with a suitable filter, e.g.: `sudo strfry scan --count '{ "kinds": [3] }'` 
+
 ## Setup strfry router
 
 This is adapted from `https://github.com/hoytech/strfry/blob/master/docs/router.md`.
@@ -35,7 +45,7 @@ sudo systemctl start runRouter.service
 sudo systemctl status runRouter.service
 ```
 
-To see if downloads are happening, check how many events are in strfry using `sudo strfry scan --count '{}'` 
+To see if downloads are happening, check that the event count is increasing (should be a handful per minute) using a command like: `sudo strfry scan --count '{}'` 
 
 Setup plugin:
 
@@ -43,6 +53,5 @@ Setup plugin:
 
 TODO: may setup mesh instead of router.
 
-## negentropy
 
 
