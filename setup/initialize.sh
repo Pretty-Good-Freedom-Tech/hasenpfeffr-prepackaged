@@ -2,6 +2,9 @@
 
 # commands to run one time at initialization
 
+sudo chmod +x /home/ubuntu/hasenpfeffr/setup/neo4jCommandsAndIndices.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/setup/startup.sh
+
 #############################################
 ############ create log files ###############
 
