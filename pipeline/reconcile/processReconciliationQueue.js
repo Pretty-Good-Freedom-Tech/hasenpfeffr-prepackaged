@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * processReconcileQueue.js
+ * processReconciliationQueue.js
  * 
  * This script processes pubkeys in the reconciliation queue by:
  * 1. Fetching the most recent kind 3 event for each pubkey from strfry
