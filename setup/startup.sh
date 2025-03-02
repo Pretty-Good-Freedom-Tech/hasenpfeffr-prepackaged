@@ -3,7 +3,6 @@
 ######################################################################
 ############ scripts that should be rerun at each startup ############
 
-
 # load CALCULATE_HOPS_TIMER and PERSONALIZED_PAGERANK_TIMER into their respective timers
 sudo /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
 sudo /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
@@ -16,9 +15,10 @@ sudo /home/ubuntu/hasenpfeffr/algos/update-personalizedPageRank-timer.sh
 sudo systemctl daemon-reload
 
 sudo systemctl start runRouter.service
+
 sudo systemctl start addToQueue.service
 sudo systemctl start processQueue.service
-sudo systemctl start createReconciliationQueue.timer
-sudo systemctl start processReconciliationQueue.timer
+sudo systemctl start runFullReconciliation.timer
+
 sudo systemctl start calculateHops.timer
 sudo systemctl start calculatePersonalizedPageRank.timer
