@@ -2,7 +2,7 @@
 Description=calculate personalizedPageRank and store scores in Neo4j
 
 [Service]
-ExecStart=sudo /home/ubuntu/hasenpfeffr/algos/personalizedPageRank.sh
+ExecStart=sudo /home/ubuntu/hasenpfeffr/algos/calculatePersonalizedPageRank.sh
 
 [Install]
 WantedBy=multi-user.target
