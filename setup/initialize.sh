@@ -28,7 +28,6 @@ sudo apt upgrade
 sudo mv /home/ubuntu/hasenpfeffr/services/runRouter.service /etc/systemd/system/runRouter.service
 
 sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
-# sudo chown root:root /etc/hasenpfeffr.conf
 
 #############################################
 ############### ETL PIPELINE ################
