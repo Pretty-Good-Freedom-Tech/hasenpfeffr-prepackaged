@@ -1,6 +1,8 @@
 Install and configure hasenpfeffr
 =====
 
+After basic setup, we will run scripts for the pipeline (batch, streaming, and reconcile) and webs of trust manually to make sure they're working. If so, we proceed to Step 4 which sets up systemd services to automate the ETL pipeline and periodic WoT calculations.
+
 # Basic setup
 
 First, run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
