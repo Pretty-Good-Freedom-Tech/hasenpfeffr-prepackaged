@@ -21,10 +21,10 @@ sudo systemctl status addToQueue.service # ? rename to addToStreamingQueue
 sudo systemctl status processQueue.service # ? rename to processStreamingQueue
 
 # pipeline: reconcile
-sudo systemctl status runReconciliation.timer # ? rename to generateReconciliationQueue
-sudo systemctl status processReconcileQueue.timer # ? rename to processReconciliationQueue
+sudo systemctl status createReconciliationQueue.timer
+sudo systemctl status processReconciliationQueue.timer
 
 # algos: calculateHops, pagerank
 sudo systemctl status calculateHops.timer
-sudo systemctl status personalizedPageRank.timer
+sudo systemctl status calculatePersonalizedPageRank.timer
 ```
