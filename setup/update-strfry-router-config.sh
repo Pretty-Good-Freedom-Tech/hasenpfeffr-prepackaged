@@ -7,7 +7,7 @@ source /etc/hasenpfeffr.conf
 GRAPEVINE_REFERENCE_PUBKEY=${GRAPEVINE_REFERENCE_PUBKEY}
 
 # Create the timer file
-cat > /home/ubuntu/hasenpfeffr/setup/strfry-router.config << EOF
+cat > /etc/strfry-router.config << EOF
 connectionTimeout = 20
 
 streams {
