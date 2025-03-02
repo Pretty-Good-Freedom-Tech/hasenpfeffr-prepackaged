@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * runReconciliation.js
+ * createReconciliation.js
  * 
  * This script compares kind 3 events from strfry with Neo4j data and
  * generates a queue of pubkeys that need their FOLLOWS relationships updated.
