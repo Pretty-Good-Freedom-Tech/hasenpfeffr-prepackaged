@@ -7,6 +7,7 @@
 sudo /home/ubuntu/hasenpfeffr/services/update-calculateHops-timer.sh
 sudo /home/ubuntu/hasenpfeffr/services/update-personalizedPageRank-timer.sh
 sudo /home/ubuntu/hasenpfeffr/services/update-runFullReconciliation-timer.sh
+sudo /home/ubuntu/hasenpfeffr/services/update-strfry-router-config.sh
 
 # TODO: create update-reconciliation-timer.sh for reconciliation (first, merge runReconciliaiton and processReconcileQueue together)
 
