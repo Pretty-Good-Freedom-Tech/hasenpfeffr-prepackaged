@@ -5,7 +5,7 @@ After basic setup, we will run scripts for the pipeline (batch, streaming, and r
 
 # Basic setup
 
-First, run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
+First, if not already done, run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
 
 ```
 sudo chmnod +x /home/ubuntu/hasenpfeffr/setup/initialize.sh
