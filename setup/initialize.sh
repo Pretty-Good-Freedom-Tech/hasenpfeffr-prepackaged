@@ -39,31 +39,28 @@ sudo mv /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf /etc/hasenpfeffr.conf
 
 # addToQueue
 
-cd ~/hasenpfeffr/pipeline/stream
-sudo chmod +x addToQueue.mjs
-sudo chmod +x processQueue.sh
-sudo chmod +x updateSingleNostrUser.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/stream/addToQueue.mjs
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/stream/processQueue.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/stream/updateSingleNostrUser.sh
 
-sudo mv ~/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
+sudo mv /home/ubuntu/hasenpfeffr/services/addToQueue.service /etc/systemd/system/addToQueue.service
 sudo chown root:root /etc/systemd/system/addToQueue.service
 
 sudo systemctl enable addToQueue.service
 
 # processQueue
 
-sudo mv ~/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
+sudo mv /home/ubuntu/hasenpfeffr/services/processQueue.service /etc/systemd/system/processQueue.service
 sudo chown root:root /etc/systemd/system/processQueue.service
 
 sudo systemctl enable processQueue.service
 
 ############### batch 
 
-cd ~/hasenpfeffr/pipeline/batch
-sudo chmod +x transfer.sh
-
-sudo chmod +x strfryToKind3Events.sh
-sudo chmod +x kind3EventsToFollows.sh
-sudo chmod +x kind3EventsToFollows.js
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/transfer.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/strfryToKind3Events.sh
+# sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/kind3EventsToFollows.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/kind3EventsToFollows.js
 
 ############### reconcile
 
@@ -72,8 +69,8 @@ sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/reconcile/createReconciliationQu
 
 # generate queue
 
-sudo mv ~/hasenpfeffr/services/createReconciliationQueue.service /etc/systemd/system/createReconciliationQueue.service
-sudo mv ~/hasenpfeffr/services/createReconciliationQueue.timer /etc/systemd/system/createReconciliationQueue.timer
+sudo mv /home/ubuntu/hasenpfeffr/services/createReconciliationQueue.service /etc/systemd/system/createReconciliationQueue.service
+sudo mv /home/ubuntu/hasenpfeffr/services/createReconciliationQueue.timer /etc/systemd/system/createReconciliationQueue.timer
 
 sudo chown root:root /etc/systemd/system/createReconciliationQueue.service
 sudo chown root:root /etc/systemd/system/createReconciliationQueue.timer
