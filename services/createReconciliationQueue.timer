@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Nostr Event Reconciliation periodically
+Description=Run Nostr Event createReconciliationQueue periodically
 After=network.target neo4j.service
 
 [Timer]
