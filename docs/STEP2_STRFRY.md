@@ -15,12 +15,17 @@ We recommend making these changes to strfry.conf:
 
 Use negentropy to sync database.
 
+First, sync all kinds 3, 1984, and 10000 events.
+
 ```
 sudo strfry sync wss://relay.primal.net --filter '{"kinds":[3,1984,10000]}'
 ```
 
+Next, sync all personalized content.
+
 ```
-source /etc/hasenpfeffr.conf && sudo strfry sync wss://relay.primal.net --filter '{"authors":["$GRAPEVINE_REFERENCE_PUBKEY"]}'
+source /etc/hasenpfeffr.conf
+sudo strfry sync wss://relay.primal.net --filter '{"authors":["$GRAPEVINE_REFERENCE_PUBKEY"]}'
 ```
 
 To verify successful download, use the strfry scan command with a suitable filter, e.g.: `sudo strfry scan --count '{ "kinds": [3] }'` 
