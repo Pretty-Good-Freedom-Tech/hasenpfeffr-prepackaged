@@ -73,11 +73,6 @@ sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculateHops.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/exportWhitelist.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/algos/calculatePersonalizedPageRank.sh
 
-# scripts to update timers at startup (fetch variables from hasenpfeffr.conf to determine frequencies)
-
-sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-calculateHops-timer.sh
-sudo chmod +x /home/ubuntu/hasenpfeffr/algos/update-calculatePersonalizedPageRank-timer.sh
-
 # calculateHops
 
 sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.service /etc/systemd/system/calculateHops.service
@@ -88,14 +83,20 @@ sudo mv /home/ubuntu/hasenpfeffr/services/calculateHops.timer /etc/systemd/syste
 sudo mv /home/ubuntu/hasenpfeffr/services/calculatePersonalizedPageRank.service /etc/systemd/system/calculatePersonalizedPageRank.service
 sudo mv /home/ubuntu/hasenpfeffr/services/calculatePersonalizedPageRank.timer /etc/systemd/system/calculatePersonalizedPageRank.timer
 
-####################################################
-############### ENABLE ALL SERVICES ################
+#########################################
+############### SERVICES ################
+
+# scripts to update timers at startup (fetch variables from hasenpfeffr.conf to determine frequencies)
+
+sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculateHops-timer.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculatePersonalizedPageRank-timer.sh
+
+# enable all services 
 
 sudo systemctl enable runRouter.service
 sudo systemctl enable addToQueue.service
 sudo systemctl enable processQueue.service
 sudo systemctl enable runFullReconciliation.timer
-
 sudo systemctl enable calculateHops.timer
 sudo systemctl enable calculatePersonalizedPageRank.timer
 
