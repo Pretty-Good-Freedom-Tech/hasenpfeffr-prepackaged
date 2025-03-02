@@ -88,6 +88,7 @@ sudo mv /home/ubuntu/hasenpfeffr/services/calculatePersonalizedPageRank.timer /e
 
 # scripts to update timers at startup (fetch variables from hasenpfeffr.conf to determine frequencies)
 
+sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-runFullReconciliation-timer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculateHops-timer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/services/update-calculatePersonalizedPageRank-timer.sh
 
