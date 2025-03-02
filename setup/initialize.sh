@@ -57,9 +57,10 @@ sudo systemctl enable processQueue.service
 
 ############### batch 
 
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/negentropySync.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/transfer.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/strfryToKind3Events.sh
-# sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/kind3EventsToFollows.sh
+sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/kind3EventsToFollows.sh
 sudo chmod +x /home/ubuntu/hasenpfeffr/pipeline/batch/kind3EventsToFollows.js
 
 ############### reconcile
