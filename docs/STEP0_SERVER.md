@@ -28,4 +28,11 @@ cd ~
 git clone https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git
 ```
 
-Edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update GRAPEVINE_REFERENCE_PUBKEY and HASENPFEFFR_RELAY_URL
+Edit hasenpfeffr.conf using `sudo nano /home/ubuntu/hasenpfeffr/setup/hasenpfeffr.conf` (or `sudo nano /etc/hasenpfeffr.conf` if you've already moved it to that location) to update GRAPEVINE_REFERENCE_PUBKEY and HASENPFEFFR_RELAY_URL. Later we will also update the Neo4j password in this file.
+
+Run the basic initialization script which installs dependencies, makes files executable, moves them to proper locations, and enables services.
+
+```
+sudo chmnod +x /home/ubuntu/hasenpfeffr/setup/initialize.sh
+sudo /home/ubuntu/hasenpfeffr/setup/initialize.sh
+```
