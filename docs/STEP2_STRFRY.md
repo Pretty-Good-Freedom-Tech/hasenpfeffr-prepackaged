@@ -25,7 +25,7 @@ Next, sync all personalized content.
 
 ```
 source /etc/hasenpfeffr.conf
-sudo strfry sync wss://relay.primal.net --filter '{"authors":["$GRAPEVINE_REFERENCE_PUBKEY"]}'
+sudo strfry sync wss://relay.hasenpfeffr.com --filter '{"authors":["'"$GRAPEVINE_REFERENCE_PUBKEY"'"]}'
 ```
 
 To verify successful download, use the strfry scan command with a suitable filter, e.g.: `sudo strfry scan --count '{ "kinds": [3] }'` 
