@@ -39,7 +39,7 @@ done < /home/ubuntu/hasenpfeffr/algos/whitelistQueryOutput.txt
 
 echo "}" >> /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json
 
-sudo mv /hume/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json /home/ubuntu/hasenpfeffr/plugins/whitelist_pubkeys.json
+sudo mv /home/ubuntu/hasenpfeffr/algos/whitelist_pubkeys.json /home/ubuntu/hasenpfeffr/plugins/whitelist_pubkeys.json
 
 # clean up
 sudo rm /home/ubuntu/hasenpfeffr/algos/whitelistQueryOutput.txt
