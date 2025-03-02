@@ -2,7 +2,9 @@
 
 # adapted from https://github.com/hoytech/strfry/blob/master/README.md#sync
 
-# use service to set up cron job (infrequently - maybe once a day)
+# TODO: enable ability to pass relay as vaariable, with wss://relay.primal.net as default
+
+# TODO: setup service to set up cron job (infrequently - maybe once a day)
 
 sudo systemctl stop addToQueue.service
 
