@@ -7,9 +7,9 @@ source /etc/hasenpfeffr.conf
 PERSONALIZED_PAGERANK_TIMER=${PERSONALIZED_PAGERANK_TIMER:-"24h"}
 
 # Create the timer file
-cat > /etc/systemd/system/personalizedPageRank.timer << EOF
+cat > /etc/systemd/system/calculatePersonalizedPageRank.timer << EOF
 [Unit]
-Description=Run personalizedPageRank periodically
+Description=Run calculatePersonalizedPageRank periodically
 After=network.target neo4j.service
 
 [Timer]
@@ -23,6 +23,6 @@ EOF
 
 # Reload systemd and restart the timer
 systemctl daemon-reload
-systemctl restart personalizedPageRank.timer
+systemctl restart calculatePersonalizedPageRank.timer
 
-echo "personalizedPageRank timer updated to run every ${PERSONALIZED_PAGERANK_TIMER}"
+echo "calculatePersonalizedPageRank timer updated to run every ${PERSONALIZED_PAGERANK_TIMER}"
