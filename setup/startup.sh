@@ -18,7 +18,7 @@ sudo systemctl daemon-reload
 sudo systemctl start runRouter.service
 sudo systemctl start addToQueue.service
 sudo systemctl start processQueue.service
-sudo systemctl start runReconciliation.timer
-sudo systemctl start processReconcileQueue.timer
+sudo systemctl start createReconciliationQueue.timer
+sudo systemctl start processReconciliationQueue.timer
 sudo systemctl start calculateHops.timer
-sudo systemctl start personalizedPageRank.timer
+sudo systemctl start calculatePersonalizedPageRank.timer
