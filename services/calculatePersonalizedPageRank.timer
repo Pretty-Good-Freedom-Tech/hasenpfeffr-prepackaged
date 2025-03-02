@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Personalized PageRank periodically
+Description=Run calculatePersonalizedPageRank periodically
 After=network.target neo4j.service
 
 [Timer]
