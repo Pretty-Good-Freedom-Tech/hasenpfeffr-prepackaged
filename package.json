@@ -1,0 +1,45 @@
+{
+  "name": "hasenpfeffr",
+  "version": "0.0.1",
+  "description": "a personalized web of trust relay based on strfry, neo4j, and the Grapevine",
+  "main": "index.js",
+  "bin": {
+    "hasenpfeffr-publish": "./bin/publish.js",
+    "hasenpfeffr-generate": "./bin/generate.js"
+  },
+  "scripts": {
+    "test": "node test/test.js",
+    "generate": "node bin/generate.js",
+    "publish": "node --expose-gc --max-old-space-size=4096 bin/publish.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr.git"
+  },
+  "keywords": [
+    "nostr",
+    "nip85",
+    "trusted-assertions",
+    "social-graph",
+    "pagerank",
+    "graperank",
+    "strfry",
+    "neo4j"
+  ],
+  "author": "straycat",
+  "license": "GPLv3.0",
+  "bugs": {
+    "url": "https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr/issues"
+  },
+  "homepage": "https://github.com/Pretty-Good-Freedom-Tech/hasenpfeffr#readme",
+  "dependencies": {
+    "@nostr-dev-kit/ndk": "^2.12.0",
+    "dotenv": "^16.4.7",
+    "neo4j-driver": "^5.28.1",
+    "nostr-tools": "^2.10.4",
+    "ws": "^8.18.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
