@@ -28,21 +28,23 @@ function getEnvVar(varName) {
 
 const userPublicKey = getEnvVar('GRAPEVINE_REFERENCE_PUBKEY');
 const hasenpfeffrRelayUrl = getEnvVar('HASENPFEFFR_RELAY_URL');
-console.log(`userPublicKey: ${userPublicKey}`)
-console.log(`hasenpfeffrRelayUrl: ${hasenpfeffrRelayUrl}`)
+// console.log(`userPublicKey: ${userPublicKey}`)
+// console.log(`hasenpfeffrRelayUrl: ${hasenpfeffrRelayUrl}`)
 
 const hasenpfeffr_relay_keys = JSON.parse(fs.readFileSync('/home/ubuntu/hasenpfeffr/nostr/keys/hasenpfeffr_relay_keys', 'utf8'));
-console.log(hasenpfeffr_relay_keys);
 
-const hasenpfeffr_relay_nsec = hasenpfeffr_relay_keys.nsec
-const hasenpfeffr_relay_privKey = hasenpfeffr_relay_keys.nsecEncoded
+// console.log(hasenpfeffr_relay_keys);
+// const hasenpfeffr_relay_nsec = hasenpfeffr_relay_keys.nsec
+// const hasenpfeffr_relay_privKey = hasenpfeffr_relay_keys.nsecEncoded
 const hasenpfeffr_relay_pubkey = hasenpfeffr_relay_keys.pubkey
-const hasenpfeffr_relay_npub = hasenpfeffr_relay_keys.npub
+// const hasenpfeffr_relay_npub = hasenpfeffr_relay_keys.npub
 
+/*
 console.log(hasenpfeffr_relay_nsec)
 console.log(hasenpfeffr_relay_privKey)
 console.log(hasenpfeffr_relay_pubkey)
 console.log(hasenpfeffr_relay_npub)
+*/
 
 const relayUrls = [ hasenpfeffrRelayUrl ]
 
@@ -56,30 +58,32 @@ let NostrEvent = {
     [
       "30382:rank",
       hasenpfeffr_relay_pubkey,
-      "wss://relay.hasenpfeffr.com"
+      hasenpfeffrRelayUrl
     ],
     [
       "30382:personalized_grapeRank",
       hasenpfeffr_relay_pubkey,
-      "wss://relay.hasenpfeffr.com"
+      hasenpfeffrRelayUrl
     ],
     [
       "30382:personalized_pageRank",
       hasenpfeffr_relay_pubkey,
-      "wss://relay.hasenpfeffr.com"
+      hasenpfeffrRelayUrl
     ],
     [
       "30382:dos",
       hasenpfeffr_relay_pubkey,
-      "wss://relay.hasenpfeffr.com"
+      hasenpfeffrRelayUrl
     ]
-  ]
-  content, // Your message content, defined in Step 2
+  ],
+  content // Your message content, defined in Step 2
 };
+
+console.log("Unsigned event:", NostrEvent);
 
 // Sign the event with the private key
 // NostrEvent.id = NostrTools.getEventHash(NostrEvent);
-// NostrEvent = await NostrTools.finalizeEvent(NostrEvent, hasenpfeffr_relay_nsec);
+// NostrEvent = await NostrTools.finalizeEvent(NostrEvent, hasenpfeffr_user_nsec);
 
 // Log the signed event
 // console.log("Signed event:", NostrEvent);
