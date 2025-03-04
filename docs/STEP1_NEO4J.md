@@ -7,7 +7,7 @@ We will be installing neo4j community edition, neo4j graph data science, and APO
 
 These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation).
 
-At the AWS console, go to your new instance, go to Security, click on the security group, go to Edit Inbound Rules, and add two new rules: both of type Custom TCP, Port range: 7474 for the first and 7687 for the second; for both, select 0.0.0.0/0 Source will change automatically to Anywhere-IPv4 (or you can be more selective for higher security)
+If not already done, you need to open up ports 7474 and 7687. 
 
 SSH into instance if you haven't already go to your current user's home directory, `cd ~` (aka `cd /home/ubuntu`).
 
