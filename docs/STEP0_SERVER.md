@@ -15,7 +15,7 @@ SSH into your instance and proceed with the steps below.
 
 ### ports
 
-Configure the EC2 security group to allow incoming traffic on ports 7474 and 7687.
+Configure the EC2 security group to allow incoming traffic on ports 7474 and 7687. At the AWS console, go to your new instance, go to Security, click on the security group, go to Edit Inbound Rules, and add two new rules: both of type Custom TCP, Port range: 7474 for the first and 7687 for the second; for both, select 0.0.0.0/0 Source will change automatically to Anywhere-IPv4 (or you can be more selective for higher security)
 
 ## download hasenpfeffr
 
