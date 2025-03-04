@@ -1,6 +1,6 @@
 # Hasenpfeffr
 
-Hasenpfeffr is a personalized Webs of Trust nostr relay that enables you to curate your nostr content.
+Hasenpfeffr is a personalized Webs of Trust nostr relay that uses advanced centrality algorithms to calculate your webs of trust, resulting in better personalized curation of your nostr content.
 
 WORK IN PROGRESS
 
