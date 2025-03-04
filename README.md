@@ -8,6 +8,7 @@ WORK IN PROGRESS
 
 - Generate personalized PageRank scores for Nostr users
 - Calculate network hops from you (degrees of separation)
+- WORK IN PROGRESS: Generate personalized GrapeRank scores
 - Publish personalized WoT scores as NIP-85 kind 30382 Trusted Assertion events
 - Optimized for large-scale data processing (100,000+ events)
 - Performance monitoring and logging
