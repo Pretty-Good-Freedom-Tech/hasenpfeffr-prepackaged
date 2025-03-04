@@ -1,12 +1,14 @@
 # Hasenpfeffr
 
-Hasenpfeffr is a Nostr identity data publication system implementing the NIP-85 Trusted Assertions protocol. It allows you to generate and publish network metrics for Nostr users as kind 30382 events.
+Hasenpfeffr is a personalized Webs of Trust nostr relay that enables you to curate your nostr content.
+
+WORK IN PROGRESS
 
 ## Features
 
 - Generate personalized PageRank scores for Nostr users
-- Calculate network hops (degrees of separation)
-- Publish trusted assertions as NIP-85 kind 30382 events
+- Calculate network hops from you (degrees of separation)
+- Publish personalized WoT scores as NIP-85 kind 30382 Trusted Assertion events
 - Optimized for large-scale data processing (100,000+ events)
 - Performance monitoring and logging
 
