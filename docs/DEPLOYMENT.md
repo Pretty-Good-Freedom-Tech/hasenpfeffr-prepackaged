@@ -20,11 +20,10 @@ When you're finished, you'll have a personal WoT relay which does the following:
 - calculates Webs of Trust scores: hops and personalized PageRank. On the docket: personalized GrapeRank.
 - exports all scores to the local relay as kind 30382 events, as per NIP-85, signed by relay-generated nsec. Forthcoming: 10040 event, signed by the user's nsec (will implement after GUI is set up)
 
-# TO DO
-
 THIS IS STILL A WORK IN PROGRESS
 
-TODO:
+# TO DO
+
 - create hasenpfeffr nodejs package
 - calculate GrapeRank
 - publish kind 10040 event as NIP-85 (Vitor's NIP)
