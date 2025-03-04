@@ -17,14 +17,16 @@ The ETL pipeline of data from strfry to neo4j is comprised of three modules:
 
 When you're finished, you'll have a personal WoT relay which does the following:
 - monitors follows, mutes, and reports
-- calculates Webs of Trust scores: hops, personalized PageRank, and personalized GrapeRank
+- calculates Webs of Trust scores: hops and personalized PageRank. On the docket: personalized GrapeRank.
+- exports all scores to the local relay as kind 30382 events, as per NIP-85, signed by relay-generated nsec. Forthcoming: 10040 event, signed by the user's nsec (will implement after GUI is set up)
 
 # TO DO
 
 THIS IS STILL A WORK IN PROGRESS
 
-Not yet implemented:
+TODO:
+- create hasenpfeffr nodejs package
 - calculate GrapeRank
-- export scores as NIP-85 (Vitor's NIP)
+- publish kind 10040 event as NIP-85 (Vitor's NIP)
 - open API to expose WoT DVM (franzap's NIP)
-- UI with control panel for the relay
+- GUI with control panel for the relay
