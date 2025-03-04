@@ -27,3 +27,4 @@ Not yet implemented:
 - calculate GrapeRank
 - export scores as NIP-85 (Vitor's NIP)
 - open API to expose WoT DVM (franzap's NIP)
+- UI with control panel for the relay
