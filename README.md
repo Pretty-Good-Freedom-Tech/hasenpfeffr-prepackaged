@@ -15,6 +15,8 @@ WORK IN PROGRESS
 
 ## Installation
 
+You first need to install strfry and Neo4j, following the instructions in the docs.
+
 ### From GitHub
 
 ```bash
