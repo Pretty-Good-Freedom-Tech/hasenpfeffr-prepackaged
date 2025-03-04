@@ -1,15 +1,13 @@
 Install and configure strfry
 =====
 
-Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md).
+Install strfry following [these instructions](https://github.com/hoytech/strfry/blob/master/docs/DEPLOYMENT.md), with these changes to the deployment docs:
+- change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
+- ? keep user: ubuntu rather than make new user strfry (may deprecate this recommendation)
 
-We recommend making these changes to strfry.conf:
+Make these changes to strfry.conf:
 - nofiles = 0
 - maxFilterLimit = 300000 (just make it something big)
-
-* change `sudo ufw default deny incoming` to `sudo ufw default allow incoming`; otherwise the command `sudo ufw enable` disrupts neo4j access by port 7474.
-
-* keep user: ubuntu rather than make new user strfry (may deprecate this recommendation)
 
 ## initialize database
 
