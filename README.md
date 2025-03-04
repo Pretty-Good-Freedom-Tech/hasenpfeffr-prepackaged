@@ -6,18 +6,20 @@ WORK IN PROGRESS
 
 ## Features
 
-- Generate personalized PageRank scores for Nostr users
-- Calculate network hops from you (degrees of separation)
-- WORK IN PROGRESS: Generate personalized GrapeRank scores
-- Publish personalized WoT scores as NIP-85 kind 30382 Trusted Assertion events
-- Optimized for large-scale data processing (100,000+ events)
-- Performance monitoring and logging
+- strfry and Neo4j integration
+- personalized PageRank
+- distance from you by follows (ak hops)
+- publish personalized WoT scores as NIP-85 kind 30382 Trusted Assertion events
+
+## Work in progress
+
+- personalized GrapeRank scores
+- GUI
+- make scores accessible through API (WoT DVM)
 
 ## Installation
 
-You first need to install strfry and Neo4j, following the instructions in the docs. Then install hasenpfeffr following instructions in the docs.
-
-WORK IN PROGRESS: refactoring the project to create a proper nodejs package structure.
+For now: follow instructions in the docs. Currently refactoring the project to create a proper nodejs package structure.
 
 ## License
 
