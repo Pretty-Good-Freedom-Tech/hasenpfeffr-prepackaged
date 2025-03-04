@@ -7,7 +7,7 @@ We will be installing neo4j community edition, neo4j graph data science, and APO
 
 These instructions are adapted from [these instructions](https://neo4j.com/docs/operations-manual/current/installation/linux/debian/#debian-installation).
 
-If not already done, you need to open up ports 7474 and 7687. 
+If not already done, configure your server to allow incoming traffic on ports 7474 and 7687.
 
 SSH into instance if you haven't already go to your current user's home directory, `cd ~` (aka `cd /home/ubuntu`).
 
