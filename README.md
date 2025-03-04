@@ -41,8 +41,7 @@ Create a configuration file at `/etc/hasenpfeffr.conf` with the following conten
 ```bash
 # Relay configuration
 export HASENPFEFFR_RELAY_URL="wss://your-relay-url.com"
-export HASENPFEFFR_RELAY_PUBKEY="your-relay-pubkey"
-export HASENPFEFFR_RELAY_NSEC="your-relay-private-key"
+export MY_NOSTR_PUBKEY="your-relay-pubkey"
 ```
 
 Alternatively, you can create a `.env` file in your project directory:
@@ -50,7 +49,6 @@ Alternatively, you can create a `.env` file in your project directory:
 ```
 HASENPFEFFR_RELAY_URL=wss://your-relay-url.com
 HASENPFEFFR_RELAY_PUBKEY=your-relay-pubkey
-HASENPFEFFR_RELAY_NSEC=your-relay-private-key
 ```
 
 ## Usage
