@@ -15,7 +15,9 @@ WORK IN PROGRESS
 
 ## Installation
 
-You first need to install strfry and Neo4j, following the instructions in the docs.
+You first need to install strfry and Neo4j, following the instructions in the docs. Then install hasenpfeffr following instructions in the docs, or install package below.
+
+** Currently refactoring the project to create a proper nodejs package structure.**
 
 ### From GitHub
 
